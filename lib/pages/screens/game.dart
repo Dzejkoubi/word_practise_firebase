@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'wordsDatabase.dart';
 
 class game extends StatefulWidget {
   @override
@@ -19,6 +20,16 @@ class _gameState extends State<game> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => wordsDatabase()),
+            );
+          },
+          label: Text('Add Words'),
+          icon: Icon(Icons.add),
+        ),
         appBar: AppBar(
           backgroundColor: Colors.indigo[700],
           title: const Text(

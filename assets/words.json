@@ -1,0 +1,1408 @@
+{
+  "words": [
+    {
+      "czech": ["zánětlivé"],
+      "english": ["inflammatory"]
+    },
+    {
+      "czech": ["oteklé"],
+      "english": ["swollen"]
+    },
+    {
+      "czech": ["hnis"],
+      "english": ["pus"]
+    },
+    {
+      "czech": ["záruka"],
+      "english": ["guarantee"]
+    },
+    {
+      "czech": ["vadný"],
+      "english": ["faulty"]
+    },
+    {
+      "czech": ["výhodný nákup"],
+      "english": ["bargain"]
+    },
+    {
+      "czech": ["pult", "počítadlo"],
+      "english": ["counter"]
+    },
+    {
+      "czech": ["snížení", "omezení"],
+      "english": ["reduction"]
+    },
+    {
+      "czech": ["štítek", "cenovka"],
+      "english": ["label"]
+    },
+    {
+      "czech": ["naúčtovat"],
+      "english": ["charge"],
+      "hint": ["price"]
+    },
+    {
+      "czech": ["značka", "známka"],
+      "english": ["mark"]
+    },
+    {
+      "czech": ["živé"],
+      "english": ["lively"]
+    },
+    {
+      "czech": ["rušný"],
+      "english": ["bustling"]
+    },
+    {
+      "czech": ["kuriózní", "malebný"],
+      "english": ["quaint"],
+      "hint": ["netradičně krásný"]
+    },
+    {
+      "czech": ["zchátralý"],
+      "english": ["run-down"]
+    },
+    {
+      "czech": ["zanedbaný"],
+      "english": ["neglected"]
+    },
+    {
+      "czech": ["volný čas"],
+      "english": ["leisure"]
+    },
+    {
+      "czech": ["chodec", "chodci"],
+      "english": ["pedestrian"]
+    },
+    {
+      "czech": ["nemovitost"],
+      "english": ["estate"]
+    },
+    {
+      "czech": ["průmysl"],
+      "english": ["industry"]
+    },
+    {
+      "czech": ["obytné"],
+      "english": ["residential"]
+    },
+    {
+      "czech": ["venkov"],
+      "english": ["rural"]
+    },
+    {
+      "czech": ["krize"],
+      "english": ["crisis"]
+    },
+    {
+      "czech": ["náhle"],
+      "english": ["abruptly"]
+    },
+    {
+      "czech": ["stádo"],
+      "english": ["herb"]
+    },
+    {
+      "czech": ["navrhnout"],
+      "english": ["propose"]
+    },
+    {
+      "czech": ["náhradní"],
+      "english": ["spare"]
+    },
+    {
+      "czech": ["soběstačný"],
+      "english": ["self-sufficent"]
+    },
+    {
+      "czech": ["jednorázové"],
+      "english": ["disposable"]
+    },
+    {
+      "czech": ["nachází se na adrese"],
+      "english": ["situated"]
+    },
+    {
+      "czech": ["procházka"],
+      "english": ["stroll"]
+    },
+    {
+      "czech": ["svižná chůze"],
+      "english": ["brisk walk"]
+    },
+    {
+      "czech": ["procházka"],
+      "english": ["stroll"],
+      "hint": ["pomalá-prohlížení po okolí"]
+    },
+    {
+      "czech": ["Pomalý běh na dlouhou vzdálenost"],
+      "english": ["jog"]
+    },
+    {
+      "czech": ["malebný"],
+      "english": ["picturesque"]
+    },
+    {
+      "czech": ["předměstí"],
+      "english": ["outskirts", "suburb"]
+    },
+    {
+      "czech": ["příjemné"],
+      "english": ["Pleasant"]
+    },
+    {
+      "czech": ["pohodlí"],
+      "english": ["Convenience"]
+    },
+    {
+      "czech": ["navzdory"],
+      "english": ["despite"]
+    },
+    {
+      "czech": ["povinen"],
+      "english": ["obliged"]
+    },
+    {
+      "czech": ["nesměle", "plaše"],
+      "english": ["timidly"]
+    },
+    {
+      "czech": ["neškodně"],
+      "english": ["inoffensively"]
+    },
+    {
+      "czech": ["docházka"],
+      "english": ["Attendance"]
+    },
+    {
+      "czech": ["krajina"],
+      "english": ["landscape", "countryside"]
+    },
+    {
+      "czech": ["nějaký"],
+      "english": ["a", "an"]
+    },
+    {
+      "czech": ["sympaticlý"],
+      "english": ["nice", "likeable", "friendly"]
+    },
+    {
+      "czech": ["stín"],
+      "english": ["shadow"],
+      "hint": ["od člověka"]
+    },
+    {
+      "czech": ["stín"],
+      "english": ["shade"],
+      "hint": ["ne od člověka"]
+    },
+    {
+      "czech": ["zloba"],
+      "english": ["spite"]
+    },
+    {
+      "czech": ["rozhořčenost"],
+      "english": ["resentfulness"]
+    },
+    {
+      "czech": ["uklidnit", "ujistit"],
+      "english": ["reassure"]
+    },
+    {
+      "czech": ["motorové mazivo"],
+      "english": ["engine-grease"]
+    },
+    {
+      "czech": ["neúnavně"],
+      "english": ["relentlessly"]
+    },
+    {
+      "czech": ["květ"],
+      "english": ["blossom"]
+    },
+    {
+      "czech": ["náhubek"],
+      "english": ["muzzle"]
+    },
+    {
+      "czech": ["okvětní lístky"],
+      "english": ["petlas"]
+    },
+    {
+      "czech": ["zázračné"],
+      "english": ["miraculous"]
+    },
+    {
+      "czech": ["neuspořádaný"],
+      "english": ["disarranged"]
+    },
+    {
+      "czech": ["omezovat"],
+      "english": ["restrain"]
+    },
+    {
+      "czech": ["trápení"],
+      "english": ["torment"]
+    },
+    {
+      "czech": ["marnost"],
+      "english": ["vanity"]
+    },
+    {
+      "czech": ["stádo"],
+      "english": ["flock"]
+    },
+    {
+      "czech": ["komín"],
+      "english": ["chimney"]
+    },
+    {
+      "czech": ["oděv"],
+      "english": ["clad"]
+    },
+    {
+      "czech": ["neukázněnost"],
+      "english": ["insubordination"]
+    },
+    {
+      "czech": ["opuštěný"],
+      "english": ["forsaken"]
+    },
+    {
+      "czech": ["vytrhané"],
+      "english": ["plucked up"]
+    },
+    {
+      "czech": ["pevně"],
+      "english": ["firmly"]
+    },
+    {
+      "czech": ["poptat se"],
+      "english": ["inquire"]
+    },
+    {
+      "czech": ["litování"],
+      "english": ["regretting"]
+    },
+    {
+      "czech": ["odsoudit"],
+      "english": ["condemn"]
+    },
+    {
+      "czech": ["šetrně"],
+      "english": ["thriftily"]
+    },
+    {
+      "czech": ["truchlit"],
+      "english": ["grieve"]
+    },
+    {
+      "czech": ["spěšně"],
+      "english": ["hastily"]
+    },
+    {
+      "czech": ["domýšlivý", "namyšlený"],
+      "english": ["conceited"]
+    },
+    {
+      "czech": ["vklad"],
+      "english": ["deposit"]
+    },
+    {
+      "czech": ["výběr", "odstoupení"],
+      "english": ["withdrawal"],
+      "hint": ["od smlouvy"]
+    },
+    {
+      "czech": ["nadšený"],
+      "english": ["thrilled"]
+    },
+    {
+      "czech": ["pověry"],
+      "english": ["superstitions"]
+    },
+    {
+      "czech": ["přibory"],
+      "english": ["cutlery"]
+    },
+    {
+      "czech": ["ovesná kaše"],
+      "english": ["oatmeal"]
+    },
+    {
+      "czech": ["vědomí"],
+      "english": ["consciousness"]
+    },
+    {
+      "czech": ["víra", "přesvědčení"],
+      "english": ["belief"]
+    },
+    {
+      "czech": ["zapadající slunce"],
+      "english": ["setting sun"]
+    },
+    {
+      "czech": ["vycházející slunce"],
+      "english": ["rising sun"]
+    },
+    {
+      "czech": ["důležité záležitosti"],
+      "english": ["matters of consequence"]
+    },
+    {
+      "czech": ["Nicméně"],
+      "english": ["nevertheless"]
+    },
+    {
+      "czech": ["mimořádné"],
+      "english": ["extraordinary"]
+    },
+    {
+      "czech": ["vytřel"],
+      "english": ["he mopped"]
+    },
+    {
+      "czech": ["čelo"],
+      "english": ["forehead"]
+    },
+    {
+      "czech": ["kapesníček"],
+      "english": ["handkerchief"]
+    },
+    {
+      "czech": ["věrný"],
+      "english": ["faithful"]
+    },
+    {
+      "czech": ["Požehnaný"],
+      "english": ["Blessed"]
+    },
+    {
+      "czech": ["vznešený", "majestátní"],
+      "english": ["stately"]
+    },
+    {
+      "czech": ["nádherné"],
+      "english": ["splendid"]
+    },
+    {
+      "czech": ["podívaná"],
+      "english": ["Spectacle"]
+    },
+    {
+      "czech": ["vtip"],
+      "english": ["wit"]
+    },
+    {
+      "czech": ["ostrůvek"],
+      "english": ["islet"]
+    },
+    {
+      "czech": ["vyhaslé", "zaniklé", "vyhynulé"],
+      "english": ["extinct"]
+    },
+    {
+      "czech": ["rychlý pohled"],
+      "english": ["glance"]
+    },
+    {
+      "czech": ["zdvořile"],
+      "english": ["courteously"]
+    },
+    {
+      "czech": ["příbytek"],
+      "english": ["abode"]
+    },
+    {
+      "czech": ["ochočený"],
+      "english": ["tamed"]
+    },
+    {
+      "czech": ["opomíjený"],
+      "english": ["neglected"]
+    },
+    {
+      "czech": ["zmatený"],
+      "english": ["perplexed"]
+    },
+    {
+      "czech": ["nora"],
+      "english": ["burrow"]
+    },
+    {
+      "czech": ["přesvědčovat"],
+      "english": ["to persuade"]
+    },
+    {
+      "czech": ["vášeň"],
+      "english": ["Passion"]
+    },
+    {
+      "czech": ["údolí"],
+      "english": ["valley"]
+    },
+    {
+      "czech": ["nezbytné"],
+      "english": ["necessary"]
+    },
+    {
+      "czech": ["rozpoznatelné"],
+      "english": ["recognizable"]
+    },
+    {
+      "czech": ["podívat se", "nahlédnout"],
+      "english": ["peer"],
+      "hint": ["skrz mezeru"]
+    },
+    {
+      "czech": ["rychlý pohled"],
+      "english": ["glase", "glimpse"]
+    },
+    {
+      "czech": ["spokojený"],
+      "english": ["contented"]
+    },
+    {
+      "czech": ["zvědavě"],
+      "english": ["inquisitively"]
+    },
+    {
+      "czech": ["naštvaný pohled"],
+      "english": ["glare"]
+    },
+    {
+      "czech": ["Navzdory"],
+      "english": ["In spite of"]
+    },
+    {
+      "czech": ["Navzdory"],
+      "english": ["Despite"]
+    },
+    {
+      "czech": ["podporovat"],
+      "english": ["encourage"]
+    },
+    {
+      "czech": ["usilovat"],
+      "english": ["pursue"]
+    },
+    {
+      "czech": ["pronásledovat"],
+      "english": ["pursuing"]
+    },
+    {
+      "czech": ["hadrová panenka"],
+      "english": ["rag doll"]
+    },
+    {
+      "czech": ["zakázat"],
+      "english": ["forbate"]
+    },
+    {
+      "czech": ["trvat na tom, aby"],
+      "english": ["insist"]
+    },
+    {
+      "czech": ["plahočil se"],
+      "english": ["trudged"]
+    },
+    {
+      "czech": ["Vykouknout"],
+      "english": ["to peep out"]
+    },
+    {
+      "czech": ["spálení od slunce"],
+      "english": ["sunburn"]
+    },
+    {
+      "czech": ["navíc"],
+      "english": ["Moreover"]
+    },
+    {
+      "czech": ["Pozorování"],
+      "english": ["sightings"]
+    },
+    {
+      "czech": ["Dlouhověkost"],
+      "english": ["longevity"]
+    },
+    {
+      "czech": ["obnoveno"],
+      "english": ["renewed"]
+    },
+    {
+      "czech": ["Pověry"],
+      "english": ["Superstition"]
+    },
+    {
+      "czech": ["Navíc"],
+      "english": ["additionally"]
+    },
+    {
+      "czech": ["prostorný"],
+      "english": ["spacious"]
+    },
+    {
+      "czech": ["popelník"],
+      "english": ["ashtray"]
+    },
+    {
+      "czech": ["sledování"],
+      "english": ["surveillance"]
+    },
+    {
+      "czech": ["vnímání"],
+      "english": ["perception"]
+    },
+    {
+      "czech": ["zdráhající se", "neochotný"],
+      "english": ["reluctant"]
+    },
+    {
+      "czech": ["ošuntělé"],
+      "english": ["scruffy"]
+    },
+    {
+      "czech": ["dotazy"],
+      "english": ["inquire"]
+    },
+    {
+      "czech": ["skrabatělé"],
+      "english": ["scrappy"]
+    },
+    {
+      "czech": ["nalepí na"],
+      "english": ["sticks on"]
+    },
+    {
+      "czech": ["vytrh", "žený"],
+      "english": ["snatched"]
+    },
+    {
+      "czech": ["zastavil", "zasekl se"],
+      "english": ["stalled"],
+      "hint": ["přestat pracovat"]
+    },
+    {
+      "czech": ["žhářství"],
+      "english": ["arson"]
+    },
+    {
+      "czech": ["vloupání"],
+      "english": ["burglary"]
+    },
+    {
+      "czech": ["vydírání"],
+      "english": ["blackmail"]
+    },
+    {
+      "czech": ["zprostit viny"],
+      "english": ["acquit"]
+    },
+    {
+      "czech": ["rivalita", "soupeření"],
+      "english": ["rivalry"]
+    },
+    {
+      "czech": ["fámy"],
+      "english": ["rumors"]
+    },
+    {
+      "czech": ["zelí"],
+      "english": ["cabbage"]
+    },
+    {
+      "czech": ["monkl"],
+      "english": ["black eye"]
+    },
+    {
+      "czech": ["pyžamo"],
+      "english": ["pajama"]
+    },
+    {
+      "czech": ["studna"],
+      "english": ["well"]
+    },
+    {
+      "czech": ["únava"],
+      "english": ["weariness"]
+    },
+    {
+      "czech": ["plahočil se"],
+      "english": ["trudged"]
+    },
+    {
+      "czech": ["horečnatý"],
+      "english": ["feverish"]
+    },
+    {
+      "czech": ["pouze", "jen"],
+      "english": ["merely"]
+    },
+    {
+      "czech": ["křížový výslech"],
+      "english": ["cross-examine"]
+    },
+    {
+      "czech": ["pulzování"],
+      "english": ["throb"]
+    },
+    {
+      "czech": ["lesk"],
+      "english": ["gleam"]
+    },
+    {
+      "czech": ["křehké"],
+      "english": ["fragile"]
+    },
+    {
+      "czech": ["míchat"],
+      "english": ["to stir"]
+    },
+    {
+      "czech": ["uhasil", "zhasnuto", "vyhaslé"],
+      "english": ["extinguished"]
+    },
+    {
+      "czech": ["kladka"],
+      "english": ["pulley"]
+    },
+    {
+      "czech": ["větrná korouhvička"],
+      "english": ["weathervane"]
+    },
+    {
+      "czech": ["třesoucí se"],
+      "english": ["trembling"]
+    },
+    {
+      "czech": ["výživa"],
+      "english": ["nourishment"]
+    },
+    {
+      "czech": ["opravdu", "vskutku"],
+      "english": ["indeed"]
+    },
+    {
+      "czech": ["mše"],
+      "english": ["Mass"]
+    },
+    {
+      "czech": ["něžnost"],
+      "english": ["tenderness"]
+    },
+    {
+      "czech": ["smutek", "žal", "zármutek"],
+      "english": ["grief"]
+    },
+    {
+      "czech": ["náhubek"],
+      "english": ["muzzle"]
+    },
+    {
+      "czech": ["hrubý"],
+      "english": ["rough"]
+    },
+    {
+      "czech": ["roztrhané"],
+      "english": ["torn"]
+    },
+    {
+      "czech": ["sestup"],
+      "english": ["descent"]
+    },
+    {
+      "czech": ["zčervenala"],
+      "english": ["she flushed"]
+    },
+    {
+      "czech": ["smutek"],
+      "english": ["sorrow"]
+    },
+    {
+      "czech": ["uklidnit", "ujistit"],
+      "english": ["reassure"]
+    },
+    {
+      "czech": ["pláč"],
+      "english": ["weeping"]
+    },
+    {
+      "czech": ["vysící"],
+      "english": ["dangling"]
+    },
+    {
+      "czech": ["roztržené na kusy"],
+      "english": ["torn asunder"]
+    },
+    {
+      "czech": ["špíz"],
+      "english": ["skewer"]
+    },
+    {
+      "czech": ["obklíčen", "obležen-lidmi"],
+      "english": ["beset"]
+    },
+    {
+      "czech": ["vězni"],
+      "english": ["inmates"]
+    },
+    {
+      "czech": ["text", "lyrika"],
+      "english": ["lyric"]
+    },
+    {
+      "czech": ["Osvícený"],
+      "english": ["Enlightened"]
+    },
+    {
+      "czech": ["zvětšený"],
+      "english": ["enlarge"]
+    },
+    {
+      "czech": ["způsobilý"],
+      "english": ["eligible"]
+    },
+    {
+      "czech": ["obsadit"],
+      "english": ["occupy"]
+    },
+    {
+      "czech": ["zahrnuje"],
+      "english": ["include"]
+    },
+    {
+      "czech": ["vznést námitku"],
+      "english": ["to object"]
+    },
+    {
+      "czech": ["k vyřešení", "vypořádání"],
+      "english": ["to dealt"]
+    },
+    {
+      "czech": ["zdá se že"],
+      "english": ["it seem to"]
+    },
+    {
+      "czech": ["spěchat"],
+      "english": ["rushing"]
+    },
+    {
+      "czech": ["bezhlavě"],
+      "english": ["headlessly", "headlong"]
+    },
+    {
+      "czech": ["bezmyšlenkovitě"],
+      "english": ["mindlessly"]
+    },
+    {
+      "czech": ["řítit se bezhlavě"],
+      "english": ["rushing headlong"],
+      "hint": ["do něčeho"]
+    },
+    {
+      "czech": ["propast"],
+      "english": ["abyss"]
+    },
+    {
+      "czech": ["omezit"],
+      "english": ["restrain"]
+    },
+    {
+      "czech": ["nenapravitelné"],
+      "english": ["irreparable"]
+    },
+    {
+      "czech": ["snést"],
+      "english": ["to bear"],
+      "hint": ["pocitově"]
+    },
+    {
+      "czech": ["prosba", "výzva", "žádost o výpomoc"],
+      "english": ["plea"]
+    },
+    {
+      "czech": ["rozhodný krok"],
+      "english": ["resolute step"]
+    },
+    {
+      "czech": ["pouze"],
+      "english": ["merely"]
+    },
+    {
+      "czech": ["odrazovat od"],
+      "english": ["discourage"]
+    },
+    {
+      "czech": ["rezavý"],
+      "english": ["rusty"]
+    },
+    {
+      "czech": ["zábavné"],
+      "english": ["amusing"]
+    },
+    {
+      "czech": ["kotník"],
+      "english": ["ankle"]
+    },
+    {
+      "czech": ["jemně"],
+      "english": ["gently"]
+    },
+    {
+      "czech": ["předcházející"],
+      "english": ["preceding"]
+    },
+    {
+      "czech": ["muflon"],
+      "english": ["mouflon"]
+    },
+    {
+      "czech": ["ohromující"],
+      "english": ["stunning"]
+    },
+    {
+      "czech": ["naprostý", "úplný"],
+      "english": ["utter"]
+    },
+    {
+      "czech": ["nepřesvědčivé"],
+      "english": ["inconvinient"]
+    },
+    {
+      "czech": ["ohromný", "nesmírný"],
+      "english": ["tremendous"]
+    },
+    {
+      "czech": ["osud"],
+      "english": ["fate"]
+    },
+    {
+      "czech": ["zásoby"],
+      "english": ["stockpile"]
+    },
+    {
+      "czech": ["vystěhování"],
+      "english": ["eviction"]
+    },
+    {
+      "czech": ["obezřetně", "opatrně"],
+      "english": ["cautiously"]
+    },
+    {
+      "czech": ["škrcení"],
+      "english": ["strangulation", "throttling"]
+    },
+    {
+      "czech": ["přikyvování"],
+      "english": ["nodding"]
+    },
+    {
+      "czech": ["padělání"],
+      "english": ["counterfeiting", "forgery"]
+    },
+    {
+      "czech": ["jak je možné že", "jaktože", "Jak je to možné?"],
+      "english": ["how come"]
+    },
+    {
+      "czech": ["zcela upřímě"],
+      "english": ["quite frankly"]
+    },
+    {
+      "czech": ["dojíždět"],
+      "english": ["commute"]
+    },
+    {
+      "czech": ["jdi do háje"],
+      "english": ["screw you"]
+    },
+    {
+      "czech": ["žák"],
+      "english": ["pupil"]
+    },
+    {
+      "czech": ["rozsáhlé"],
+      "english": ["vast"]
+    },
+    {
+      "czech": ["hustota"],
+      "english": ["density"]
+    },
+    {
+      "czech": ["po ukončení studia"],
+      "english": ["post-grad"]
+    },
+    {
+      "czech": ["matoucí", "zmatečné"],
+      "english": ["baffling"]
+    },
+    {
+      "czech": ["pult", "deska", "pracovní deska"],
+      "english": ["countertop"]
+    },
+    {
+      "czech": ["bahniště"],
+      "english": ["mudbank"]
+    },
+    {
+      "czech": ["to pivot"],
+      "english": ["otáčet"]
+    },
+    {
+      "czech": ["skromný", "pokorný"],
+      "english": ["humble"]
+    },
+    {
+      "czech": ["sukničkář"],
+      "english": ["womanizer"]
+    },
+    {
+      "czech": ["diletant"],
+      "english": ["dilettante"]
+    },
+    {
+      "czech": ["pohrdání", "opovržení"],
+      "english": ["disdain"]
+    },
+    {
+      "czech": ["stručný", "krátký"],
+      "english": ["brief"]
+    },
+    {
+      "czech": ["jmenovat"],
+      "english": ["to appoint"]
+    },
+    {
+      "czech": ["požádat", "žádat - o"],
+      "english": ["to solicit"]
+    },
+    {
+      "czech": ["trestně stíhat"],
+      "english": ["to prosecute"]
+    },
+    {
+      "czech": ["vyhledat"],
+      "english": ["retrieve"]
+    },
+    {
+      "czech": ["štěpení"],
+      "english": ["fission"]
+    },
+    {
+      "czech": ["životaschopné"],
+      "english": ["viable"]
+    },
+    {
+      "czech": ["odstrašení"],
+      "english": ["deterrence"]
+    },
+    {
+      "czech": ["prorok"],
+      "english": ["prophet"]
+    },
+    {
+      "czech": ["zničit", "ztroskotat", "zmařit"],
+      "english": ["to scupper"]
+    },
+    {
+      "czech": ["jednoznačné"],
+      "english": ["unambiguous"]
+    },
+    {
+      "czech": ["hojné", "bohaté"],
+      "english": ["abundant"]
+    },
+    {
+      "czech": ["škodolibost"],
+      "english": ["gloat"]
+    },
+    {
+      "czech": ["škodolibě se radovat"],
+      "english": ["to gloat"]
+    },
+    {
+      "czech": ["nápravac"],
+      "english": ["remedy"]
+    },
+    {
+      "czech": ["upřímnost"],
+      "english": ["candor"]
+    },
+    {
+      "czech": ["důvěryhodnost"],
+      "english": ["crededibility"]
+    },
+    {
+      "czech": ["uchopit"],
+      "english": ["to grasp"]
+    },
+    {
+      "czech": ["zmírnit"],
+      "english": ["to temper"]
+    },
+    {
+      "czech": ["hluboký"],
+      "english": ["profound"]
+    },
+    {
+      "czech": ["obavy"],
+      "english": ["concern"]
+    },
+    {
+      "czech": ["ponižovat"],
+      "english": ["to humiliate"]
+    },
+    {
+      "czech": ["přestávka(v debatování", "probírání něčeho)"],
+      "english": ["recess"]
+    },
+    {
+      "czech": ["pomstychivý"],
+      "english": ["vindictive", "vengeful", "ravengeful"]
+    },
+    {
+      "czech": ["mučetník"],
+      "english": ["the martyr"]
+    },
+    {
+      "czech": ["trvat na tom, aby"],
+      "english": ["to insist"]
+    },
+    {
+      "czech": ["propracované"],
+      "english": ["elaborate"]
+    },
+    {
+      "czech": ["vypracovat"],
+      "english": ["to elaborate"]
+    },
+    {
+      "czech": ["Mořské panny"],
+      "english": ["mermaids"]
+    },
+    {
+      "czech": ["veranda"],
+      "english": ["porch"]
+    },
+    {
+      "czech": ["stárnoucí", "stárnutí"],
+      "english": ["aging"]
+    },
+    {
+      "czech": ["rohožka"],
+      "english": ["doormat", "mat"]
+    },
+    {
+      "czech": ["zatuchlý"],
+      "english": ["musty"]
+    },
+    {
+      "czech": ["vratký", "rozvrzaný"],
+      "english": ["rickety"]
+    },
+    {
+      "czech": ["lahodný", "chutný", "svěží", "pečlivý"],
+      "english": ["scruptious"]
+    },
+    {
+      "czech": ["vyděšený"],
+      "english": ["startled"]
+    },
+    {
+      "czech": ["tréma", "obavy", "strach"],
+      "english": ["trepidation"]
+    },
+    {
+      "czech": ["škádlivý", "dráždivý"],
+      "english": ["teasing"]
+    },
+    {
+      "czech": ["otáčet se"],
+      "english": ["to swivel"],
+      "hint": ["na židly"]
+    },
+    {
+      "czech": ["vyhrknout"],
+      "english": ["blurt out"]
+    },
+    {
+      "czech": ["podvodník"],
+      "english": ["crook", "scammer"]
+    },
+    {
+      "czech": ["stížnosti"],
+      "english": ["grievance", "complaints"]
+    },
+    {
+      "czech": ["vrzající"],
+      "english": ["creaky"]
+    },
+    {
+      "czech": ["žádná odvaha"],
+      "english": ["no guts", "no courage"]
+    },
+    {
+      "czech": ["pozorně", "soustředěně"],
+      "english": ["intently"]
+    },
+    {
+      "czech": ["využívat", "zneužívat", "vykořisťovat"],
+      "english": ["to exploit"]
+    },
+    {
+      "czech": ["úšklebek", "úsměv", "škleb"],
+      "english": ["grin"]
+    },
+    {
+      "czech": ["mazaný", "lstivý", "vychytralý", "prohnaný"],
+      "english": ["sly"]
+    },
+    {
+      "czech": ["pobřeží", "břeh"],
+      "english": ["shore"]
+    },
+    {
+      "czech": ["břeh řeky"],
+      "english": ["riverbank", "river bank"]
+    },
+    {
+      "czech": ["povodně", "záplavy"],
+      "english": ["flood"]
+    },
+    {
+      "czech": ["žihadlo"],
+      "english": ["sting"]
+    },
+    {
+      "czech": ["nedostatek"],
+      "english": ["lack of", "shortage", "scaricity"]
+    },
+    {
+      "czech": ["klíčový"],
+      "english": ["pivotal"]
+    },
+    {
+      "czech": ["odolné"],
+      "english": ["resilient"]
+    },
+    {
+      "czech": ["nashromáždit"],
+      "english": ["to amass"]
+    },
+    {
+      "czech": ["zoufalý"],
+      "english": ["desperate"]
+    },
+    {
+      "czech": ["nadšený z"],
+      "english": ["esctatic with"]
+    },
+    {
+      "czech": ["něco, co si způsobila sama"],
+      "english": ["self-inflected something"]
+    },
+    {
+      "czech": ["Pokouším se", "Láká mě"],
+      "english": ["I tempt"]
+    },
+    {
+      "czech": ["pokračovat"],
+      "english": ["proceed"]
+    },
+    {
+      "czech": ["zintenzivňuje"],
+      "english": ["intensifies"]
+    },
+    {
+      "czech": ["prosperovat"],
+      "english": ["to thrive"]
+    },
+    {
+      "czech": ["vzkvétat"],
+      "english": ["to flourish"]
+    },
+    {
+      "czech": ["porozumět", "chápat", "pochopit", ""],
+      "english": ["to comprehend"]
+    },
+    {
+      "czech": ["slavnostně"],
+      "english": ["solemnly"]
+    },
+    {
+      "czech": ["vývar"],
+      "english": ["broth"]
+    },
+    {
+      "czech": ["záliv"],
+      "english": ["gulf"]
+    },
+    {
+      "czech": ["klamání", "podvod", "klam"],
+      "english": ["deception"]
+    },
+    {
+      "czech": ["skleník"],
+      "english": ["greenhouse"]
+    },
+    {
+      "czech": ["výfuk"],
+      "english": ["exhaust"]
+    },
+    {
+      "czech": ["výpary", "kouře"],
+      "english": ["fumes"]
+    },
+    {
+      "czech": ["napětí"],
+      "english": ["suspense"]
+    },
+    {
+      "czech": ["původně"],
+      "english": ["initially"]
+    },
+    {
+      "czech": ["vydržet", "snášet"],
+      "english": ["to endure"]
+    },
+    {
+      "czech": ["velkolepé", "úchvatné"],
+      "english": ["spectacular"]
+    },
+    {
+      "czech": ["kroupy"],
+      "english": ["hailstones", "hail"]
+    },
+    {
+      "czech": ["příliv"],
+      "english": ["high tide"]
+    },
+    {
+      "czech": ["odliv"],
+      "english": ["low tide"]
+    },
+    {
+      "czech": ["příliv a odliv"],
+      "english": ["tides", "tide"]
+    },
+    {
+      "czech": ["vyvrcholení"],
+      "english": ["climax"],
+      "hint": ["v příběhu"]
+    },
+    {
+      "czech": ["sucho"],
+      "english": ["drought"]
+    },
+    {
+      "czech": ["vánek"],
+      "english": ["breeze"]
+    },
+    {
+      "czech": ["předpověď"],
+      "english": ["forecast", "prediction"]
+    },
+    {
+      "czech": ["vichřice", "vichr"],
+      "english": ["gale"]
+    },
+    {
+      "czech": ["rozbouřené moře", "neklidné moře", "rozvlněné moře"],
+      "english": ["choppy sea"]
+    },
+    {
+      "czech": ["nalít", "nalévat", "vylévat", "vylít"],
+      "english": ["to pour"]
+    },
+    {
+      "czech": ["ani"],
+      "english": ["nor", "neither"]
+    },
+    {
+      "czech": ["pomocné"],
+      "english": ["auxiliary"]
+    },
+    {
+      "czech": ["zavazadla"],
+      "english": ["luggage", "baggage"]
+    },
+    {
+      "czech": ["ubytování"],
+      "english": ["accomodation"]
+    },
+    {
+      "czech": ["zda"],
+      "english": ["whether"]
+    },
+    {
+      "czech": ["citovat"],
+      "english": ["to cite"]
+    },
+    {
+      "czech": ["citace"],
+      "english": ["citation", "quote"]
+    },
+    {
+      "czech": ["vznášet se"],
+      "english": ["to hover", "to float", "to heave"]
+    },
+    {
+      "czech": ["pohlédnout zasněně", "dívat se zasněně", "hledět zasněně"],
+      "english": ["to gaze"]
+    },
+    {
+      "czech": ["zírat"],
+      "english": ["to stare"]
+    },
+    {
+      "czech": ["skvnitý"],
+      "english": ["spotty"]
+    },
+    {
+      "czech": ["hmatatelné"],
+      "english": ["tangible"]
+    },
+    {
+      "czech": ["potěšení"],
+      "english": ["delight"]
+    },
+    {
+      "czech": ["pobočka"],
+      "english": ["branch", "branch office"]
+    },
+    {
+      "czech": ["nenávist"],
+      "english": ["hatred", "hate"]
+    },
+    {
+      "czech": ["vyhnat", "vykázat"],
+      "english": ["to banish"]
+    },
+    {
+      "czech": ["mléčné výrobky"],
+      "english": ["dairy"]
+    },
+    {
+      "czech": ["odpor", "nenávist"],
+      "english": ["loath"]
+    },
+    {
+      "czech": ["stesk po domově"],
+      "english": ["homesick"]
+    },
+    {
+      "czech": ["ženich"],
+      "english": ["groom"]
+    },
+    {
+      "czech": ["vzhledem k tomu, že", "vzhledem k tomu"],
+      "english": ["whereas"]
+    },
+    {
+      "czech": ["ačkoli", "ačkoliv"],
+      "english": ["although"]
+    }
+  ]
+}
