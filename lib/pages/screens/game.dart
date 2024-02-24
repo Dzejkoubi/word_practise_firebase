@@ -75,7 +75,7 @@ class _gameState extends State<game> {
                         child: TextField(
                           controller: _textFieldInput,
                           style: TextStyle(
-                            color: Color(0xFF988e7a),
+                            color: Colors.black,
                             fontSize: 22,
                           ),
                           decoration: InputDecoration(
@@ -87,7 +87,7 @@ class _gameState extends State<game> {
                             border: OutlineInputBorder(),
                             labelText: 'Translation',
                             labelStyle: TextStyle(
-                              color: Color(0xFF988e7a),
+                              color: Colors.grey,
                               fontSize: 20,
                             ),
                             fillColor: Colors.white,

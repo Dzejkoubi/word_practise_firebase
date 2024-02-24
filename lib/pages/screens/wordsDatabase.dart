@@ -1,12 +1,12 @@
 //General imports
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 //Word converter imports
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/widgets.dart';
 import "../services/wordsConverter.dart";
 
 class wordsDatabase extends StatefulWidget {
@@ -15,10 +15,19 @@ class wordsDatabase extends StatefulWidget {
   State<wordsDatabase> createState() => _wordsDatabaseState();
 }
 
+void printConvertedJson() async {
+  final String response = await rootBundle.loadString('assets/words.json');
+  final data = json.decode(response);
+  final wordList = WordList.fromJson(data);
+
+  print(wordList.words);
+}
+
 class _wordsDatabaseState extends State<wordsDatabase> {
   Future<WordList> loadWordList() async {
     final String response = await rootBundle.loadString('assets/words.json');
     final data = json.decode(response);
+
     return WordList.fromJson(data);
   }
 
@@ -29,7 +38,7 @@ class _wordsDatabaseState extends State<wordsDatabase> {
           title: Text(
             "Your Words",
             style: TextStyle(
-              color: Color(0xFF90CAF9),
+              color: Colors.blue[200],
               fontWeight: FontWeight.bold,
               fontSize: 30,
             ),
@@ -39,37 +48,55 @@ class _wordsDatabaseState extends State<wordsDatabase> {
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-          child: FutureBuilder<WordList>(
-            future: loadWordList(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                // Correctly use ListView.builder to display words in the list
-                return ListView.builder(
-                  itemCount:
-                      snapshot.data!.words.length, // itemCount should be here
-                  itemBuilder: (context, index) {
-                    // itemBuilder starts here
-                    final wordEntry = snapshot.data!.words[index];
-                    return ListTile(
-                      title: Text('Czech: ${wordEntry.czech.join(', ')}'),
-                      subtitle:
-                          Text('English: ${wordEntry.english.join(', ')}'),
-                      trailing: Text(wordEntry.hint?.join(', ') ?? ''),
-                    );
-                  }, // itemBuilder ends here
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text("Error: ${snapshot.error}"),
-                );
-              } else {
-                // By default, show a loading spinner.
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              // This is outside the FutureBuilder's builder function
-            },
+          child: Column(
+            children: [
+              TextButton.icon(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color?>(Colors.blue[200])),
+                label: Text(
+                  "Add words",
+                  style: TextStyle(color: Colors.blue[900]),
+                ),
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.blue[900],
+                ),
+                onPressed: () {},
+              ),
+              Expanded(
+                child: FutureBuilder<WordList>(
+                  future: loadWordList(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.words.length,
+                        itemBuilder: (context, index) {
+                          final wordEntry = snapshot.data!.words[index];
+                          //List item start
+                          return ListTile(
+                            title: Text('Czech: ${wordEntry.czech.join(', ')}'),
+                            subtitle: Text(
+                                'English: ${wordEntry.english.join(', ')}'),
+                            trailing: Text(wordEntry.hint?.join(', ') ?? ''),
+                          );
+                          //List item end
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text("Error: ${snapshot.error}"),
+                      );
+                    } else {
+                      // Loading
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
+              ),
+            ],
           ),
         ));
   }
