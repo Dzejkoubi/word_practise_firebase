@@ -74,7 +74,7 @@ class _gameState extends State<game> {
                         height: 70,
                         child: TextField(
                           controller: _textFieldInput,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 22,
                           ),

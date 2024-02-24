@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 //Word converter imports
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter/widgets.dart';
 import "../services/wordsConverter.dart";
 
 class wordsDatabase extends StatefulWidget {
@@ -51,19 +50,26 @@ class _wordsDatabaseState extends State<wordsDatabase> {
           child: Column(
             children: [
               TextButton.icon(
-                style: ButtonStyle(
+                  style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color?>(Colors.blue[200])),
-                label: Text(
-                  "Add words",
-                  style: TextStyle(color: Colors.blue[900]),
-                ),
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.blue[900],
-                ),
-                onPressed: () {},
-              ),
+                        MaterialStateProperty.all<Color?>(Colors.blue[200]),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            side: BorderSide(
+                                color: Colors.blue[900]!, width: 2.0))),
+                  ),
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.blue[900],
+                  ),
+                  label: Text(
+                    'Add Words',
+                    style: TextStyle(
+                      color: Colors.blue[900],
+                    ),
+                  )),
               Expanded(
                 child: FutureBuilder<WordList>(
                   future: loadWordList(),
