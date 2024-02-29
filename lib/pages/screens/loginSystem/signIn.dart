@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/pages/services/auth.dart';
+import 'package:word_practise_firebase/pages/screens/loginSystem/auth.dart';
 
 class signIn extends StatefulWidget {
   const signIn({super.key});

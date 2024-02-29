@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:word_practise_firebase/pages/models/user.dart';
+import 'package:word_practise_firebase/pages/screens/loginSystem/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

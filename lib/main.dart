@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:word_practise_firebase/firebase_options.dart';
 import 'package:word_practise_firebase/pages/screens/game.dart';
-import 'package:word_practise_firebase/pages/wrapper.dart';
+import 'package:word_practise_firebase/pages/screens/loginSystem/wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
