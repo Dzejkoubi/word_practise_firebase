@@ -2,19 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:word_practise_firebase/pages/screens/wordsDatabase.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -23,8 +27,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _textFieldInput = TextEditingController();
   final Future<FirebaseApp> _fApp = Firebase.initializeApp();
-  String realTimeValue = "0";
-  String getOnceValue = "0";
+  String realTimeValue = "null";
+  String getOnceValue = "null";
+  final String firebaseDirectory = "";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,25 +65,24 @@ class _MyAppState extends State<MyApp> {
             } else if (snapshot.hasData) {
               return content();
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           }),
     ));
   }
 
   Widget content() {
-    FirebaseDatabase database = FirebaseDatabase.instance;
-    DatabaseReference _TestRef =
-        FirebaseDatabase.instance.ref().child('TestNum');
-    _TestRef.onValue.listen((event) {
-      setState(
-        () {
-          realTimeValue = event.snapshot.value.toString();
-        },
-      );
-    }, onError: (error) {
-      print('Error: $error');
+    // real Time values
+    DatabaseReference ref = FirebaseDatabase(
+            databaseURL:
+                "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
+        .ref();
+    ref.child("test").onValue.listen((event) {
+      setState(() {
+        realTimeValue = event.snapshot.value.toString();
+      });
     });
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
@@ -96,10 +101,10 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
-              "WORD",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              "Enter the translation of the word below: $realTimeValue",
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(height: 10),
             Row(
@@ -136,9 +141,7 @@ class _MyAppState extends State<MyApp> {
                     backgroundColor: Colors.indigo[300],
                   ),
                   onPressed: () {
-                    setState(() {
-                      print(_textFieldInput.text);
-                    });
+                    print(_textFieldInput.text);
                   },
                   child: const Text(
                     'Submit',
@@ -150,6 +153,29 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
+            TextButton(
+                onPressed: () async {
+                  DatabaseReference getOnceTest = FirebaseDatabase(
+                          databaseURL:
+                              "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
+                      .ref("words/94/english/0");
+                  final snapshot = await getOnceTest.get();
+                  if (snapshot != null) {
+                    setState(() {
+                      getOnceValue = snapshot.value.toString();
+                    });
+                  } else {
+                    setState(() {
+                      getOnceValue = "null";
+                    });
+                  }
+                },
+                child: const Text('Update OnceValue')),
+            TextButton(
+                onPressed: () async {
+                  ref.child("words/348/").set("new value");
+                },
+                child: Text('Change value')),
             Text("realTimeValue: $realTimeValue",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
