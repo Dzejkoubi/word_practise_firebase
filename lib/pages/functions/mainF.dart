@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:word_practise_firebase/main.dart';
 import 'dart:math';
 
+//Gets total number of words in the database.
 Future<int> getCountOfWords() async {
   final ref = FirebaseDatabase(
           databaseURL:
@@ -22,48 +23,55 @@ Future<int> getCountOfWords() async {
   }
 }
 
+//Gets a random number for a word.
 Future<int> getWordNumber() async {
   int countOfWords = await getCountOfWords();
-  if (countOfWords == 0) {
-    return 0;
-  } else {
-    int randomNumber = Random().nextInt(max(countOfWords, 1));
+  if (countOfWords != 0) {
+    int randomNumber = Random().nextInt(max(countOfWords, 0));
     return randomNumber;
+  } else {
+    return 0;
   }
 }
 
+//Gets how many words are in the English and Czech lists for a random word.
 Future<List<int>> getCountOfEnCzWords() async {
-  int countOfWords;
+  int wordNumber;
   try {
-    countOfWords = await getWordNumber(); // Correctly awaiting the Future<int>
+    wordNumber = await getWordNumber(); // Correctly awaiting the Future<int>
   } catch (e) {
     print("Error getting word number: $e");
     return [0, 0]; // Handle the error or return.
   }
+  print("Number of word: $wordNumber");
 
   final enRef = FirebaseDatabase(
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
       .ref()
-      .child("words/$countOfWords/english");
+      .child("words/$wordNumber/english");
 
   final czRef = FirebaseDatabase(
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
       .ref()
-      .child("words/$countOfWords/czech");
+      .child("words/$wordNumber/czech");
 
-  final enSnapshot = await enRef.get();
-  final czSnapshot = await czRef.get();
+  final enWord = await enRef.get();
+  final czWord = await czRef.get();
 
-  if (enSnapshot.exists && czSnapshot.exists) {
-    List<dynamic> englishWords = enSnapshot.value as List<dynamic> ?? [];
-    List<dynamic> czechWords = czSnapshot.value as List<dynamic> ?? [];
+  if (enWord.exists && czWord.exists) {
+    print("English: ${enWord.value}");
+    print("Czech: ${czWord.value}");
+    List<dynamic> englishWords = enWord.value as List<dynamic> ?? [];
+    List<dynamic> enWords = czWord.value as List<dynamic> ?? [];
     return [
-      englishWords.length,
-      czechWords.length
+      englishWords.length - 1,
+      enWords.length - 1,
     ]; // Correctly returning counts as lists
   } else {
-    return [0, 0]; // Returning 0 for both if either snapshot doesn't exist.
+    throw Exception(
+        "Snapshot doesn't exist"); // Throw an error if either snapshot doesn't exist.
+    // Returning 0 for both if either snapshot doesn't exist.
   }
 }
