@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:word_practise_firebase/pages/screens/wordsDatabase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:word_practise_firebase/pages/functions/mainF.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -140,8 +141,9 @@ class _MyAppState extends State<MyApp> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo[300],
                   ),
-                  onPressed: () {
-                    print(_textFieldInput.text);
+                  onPressed: () async {
+                    List<int> numberOfWords = await getCountOfEnCzWords();
+                    print(numberOfWords);
                   },
                   child: const Text(
                     'Submit',
