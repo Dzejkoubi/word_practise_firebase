@@ -2,9 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:word_practise_firebase/pages/screens/wordsDatabase.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:word_practise_firebase/pages/functions/mainF.dart';
+import 'dart:math';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,9 +27,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _textFieldInput = TextEditingController();
   final Future<FirebaseApp> _fApp = Firebase.initializeApp();
-  String realTimeValue = "null";
-  String getOnceValue = "null";
-  final String firebaseDirectory = "";
+  final ref = FirebaseDatabase(
+          databaseURL:
+              "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
+      .ref();
 
   @override
   Widget build(BuildContext context) {
@@ -74,15 +74,72 @@ class _MyAppState extends State<MyApp> {
 
   Widget content() {
     // real Time values
-    DatabaseReference ref = FirebaseDatabase(
-            databaseURL:
-                "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
-        .ref();
-    ref.child("test").onValue.listen((event) {
-      setState(() {
-        realTimeValue = event.snapshot.value.toString();
-      });
-    });
+    //Game
+    //Game values and variables
+    int wordsCount = 0;
+    int wordNumber;
+    String foreignWord;
+    Future enWords;
+    Future czWords;
+    String englishWords;
+    String czechWords;
+    int englishWordsLength;
+    int czechWordsLength;
+    //References to firebase database
+    final wordsRef = ref.child("words");
+    //Game functions
+    //1. Gets total number of words in the database.
+    Future<int> getCountOfWords() async {
+      final snapshot = await wordsRef.get();
+      if (snapshot.exists) {
+        List<dynamic> words = snapshot.value as List<dynamic>;
+        return wordsCount = words.length;
+      } else {
+        return 0;
+      }
+    }
+
+    void game() async {
+      wordsCount =
+          await getCountOfWords(); //gets the total number of words in the database.
+      wordNumber = Random().nextInt(
+          max(wordsCount, 1)); //selects a random word number from the database.
+      final enWords = wordsRef.child("$wordNumber/english").get();
+      final czWords = wordsRef.child("$wordNumber/czech").get();
+      List<dynamic> englishWords = (await enWords).value as List<dynamic> ?? [];
+      List<dynamic> czechWords = (await czWords).value as List<dynamic> ?? [];
+      englishWordsLength = englishWords.length - 1;
+      czechWordsLength = czechWords.length - 1;
+      int czOrEn;
+// Check both lengths directly from the list sizes
+      englishWordsLength = englishWords.length;
+      czechWordsLength = czechWords.length;
+
+// Determine if we should attempt to select from English or Czech lists
+      if (englishWordsLength > 0 && czechWordsLength > 0) {
+        czOrEn = Random()
+            .nextInt(2); // Both have words, choose randomly between them
+      } else if (englishWordsLength > 0) {
+        czOrEn = 0; // Only English words available
+      } else if (czechWordsLength > 0) {
+        czOrEn = 1; // Only Czech words available
+      } else {
+        // Handle the case where both lists are empty
+        foreignWord = ""; // No words available
+        print(foreignWord);
+        return;
+      }
+
+// Now, select a word based on the updated logic
+      if (czOrEn == 0) {
+        foreignWord = englishWords[Random().nextInt(englishWordsLength)];
+      } else {
+        // This implies czOrEn == 1 and czechWordsLength > 0
+        foreignWord = czechWords[Random().nextInt(czechWordsLength)];
+      }
+
+      print(foreignWord);
+    }
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -104,7 +161,7 @@ class _MyAppState extends State<MyApp> {
             ),
             const SizedBox(height: 10),
             Text(
-              "Enter the translation of the word below: $realTimeValue",
+              "Enter the translation of the word below:",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(height: 10),
@@ -142,8 +199,7 @@ class _MyAppState extends State<MyApp> {
                     backgroundColor: Colors.indigo[300],
                   ),
                   onPressed: () async {
-                    List<int> numberOfWords = await getCountOfEnCzWords();
-                    print(numberOfWords);
+                    game();
                   },
                   child: const Text(
                     'Submit',
@@ -154,37 +210,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ],
-            ),
-            TextButton(
-                onPressed: () async {
-                  DatabaseReference getOnceTest = FirebaseDatabase(
-                          databaseURL:
-                              "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
-                      .ref("words/94/english/0");
-                  final snapshot = await getOnceTest.get();
-                  if (snapshot != null) {
-                    setState(() {
-                      getOnceValue = snapshot.value.toString();
-                    });
-                  } else {
-                    setState(() {
-                      getOnceValue = "null";
-                    });
-                  }
-                },
-                child: const Text('Update OnceValue')),
-            TextButton(
-                onPressed: () async {
-                  ref.child("words/348/").set("new value");
-                },
-                child: Text('Change value')),
-            Text("realTimeValue: $realTimeValue",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                )),
-            Text("getOnceValue: $getOnceValue",
-                style: const TextStyle(fontSize: 20)),
+            )
           ],
         ),
       ),
