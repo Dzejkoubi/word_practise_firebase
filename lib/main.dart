@@ -31,6 +31,90 @@ class _MyAppState extends State<MyApp> {
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
       .ref();
+  //Variables
+  int wordsCount = 0;
+  int wordNumber = 0;
+  String foreignWord = "";
+  List<dynamic> englishWords = [];
+  List<dynamic> czechWords = [];
+  int englishWordsLength = 0;
+  int czechWordsLength = 0;
+  int czOrEn = 0;
+  String worngAnswerShower = "";
+
+  Future<void> game() async {
+    final wordsRef = FirebaseDatabase.instance.ref().child("words");
+
+    // Getting the total number of words in the database
+    final snapshot = await wordsRef.get();
+    if (snapshot.exists && snapshot.value is List) {
+      List<dynamic> words = snapshot.value as List<dynamic>;
+
+      // Use setState to update the state variables and refresh the UI
+      setState(() {
+        wordsCount = words.length;
+        wordNumber = Random().nextInt(wordsCount);
+      });
+
+      final enWordSnapshot = await wordsRef.child("$wordNumber/english").get();
+      final czWordSnapshot = await wordsRef.child("$wordNumber/czech").get();
+
+      // Safe checks and updates with setState
+      if (enWordSnapshot.exists && enWordSnapshot.value is List) {
+        setState(() {
+          englishWords = enWordSnapshot.value as List<dynamic>;
+          englishWordsLength = englishWords.length;
+        });
+      }
+
+      if (czWordSnapshot.exists && czWordSnapshot.value is List) {
+        setState(() {
+          czechWords = czWordSnapshot.value as List<dynamic>;
+          czechWordsLength = czechWords.length;
+        });
+      }
+
+      // Selects a word based on the available lists
+      setState(() {
+        if (englishWordsLength > 0 && czechWordsLength > 0) {
+          czOrEn = Random()
+              .nextInt(2); // Choose randomly between English and Czech words
+          if (czOrEn == 0) {
+            foreignWord = englishWords[Random().nextInt(englishWordsLength)];
+          } else {
+            foreignWord = czechWords[Random().nextInt(czechWordsLength)];
+          }
+        } else {
+          print("No words available");
+        }
+      });
+    } else {
+      print("No words available");
+    }
+  }
+
+  bool checkAnswer() {
+    if (czOrEn == 0) {
+      if (czechWords.contains(_textFieldInput.text)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (czOrEn == 1) {
+      if (englishWords.contains(_textFieldInput.text)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    game();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,147 +157,81 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget content() {
-    // real Time values
-    //Game
-    //Game values and variables
-    int wordsCount = 0;
-    int wordNumber;
-    String foreignWord;
-    Future enWords;
-    Future czWords;
-    String englishWords;
-    String czechWords;
-    int englishWordsLength;
-    int czechWordsLength;
-    //References to firebase database
-    final wordsRef = ref.child("words");
-    //Game functions
-    //1. Gets total number of words in the database.
-    Future<int> getCountOfWords() async {
-      final snapshot = await wordsRef.get();
-      if (snapshot.exists) {
-        List<dynamic> words = snapshot.value as List<dynamic>;
-        return wordsCount = words.length;
-      } else {
-        return 0;
-      }
-    }
-
-    void game() async {
-      wordsCount =
-          await getCountOfWords(); //gets the total number of words in the database.
-      wordNumber = Random().nextInt(
-          max(wordsCount, 1)); //selects a random word number from the database.
-      final enWords = wordsRef.child("$wordNumber/english").get();
-      final czWords = wordsRef.child("$wordNumber/czech").get();
-      List<dynamic> englishWords = (await enWords).value as List<dynamic> ?? [];
-      List<dynamic> czechWords = (await czWords).value as List<dynamic> ?? [];
-      englishWordsLength = englishWords.length - 1;
-      czechWordsLength = czechWords.length - 1;
-      int czOrEn;
-// Check both lengths directly from the list sizes
-      englishWordsLength = englishWords.length;
-      czechWordsLength = czechWords.length;
-
-// Determine if we should attempt to select from English or Czech lists
-      if (englishWordsLength > 0 && czechWordsLength > 0) {
-        czOrEn = Random()
-            .nextInt(2); // Both have words, choose randomly between them
-      } else if (englishWordsLength > 0) {
-        czOrEn = 0; // Only English words available
-      } else if (czechWordsLength > 0) {
-        czOrEn = 1; // Only Czech words available
-      } else {
-        // Handle the case where both lists are empty
-        foreignWord = ""; // No words available
-        print(foreignWord);
-        return;
-      }
-
-// Now, select a word based on the updated logic
-      if (czOrEn == 0) {
-        foreignWord = englishWords[Random().nextInt(englishWordsLength)];
-      } else {
-        // This implies czOrEn == 1 and czechWordsLength > 0
-        foreignWord = czechWords[Random().nextInt(czechWordsLength)];
-      }
-
-      print(foreignWord);
-    }
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
-        child: Column(
-          children: <Widget>[
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.indigo[300],
-              ),
-              onPressed: () {},
-              child: const Text(
-                'Start game',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
+          child: Column(
+        children: <Widget>[
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.indigo[300],
+            ),
+            onPressed: () {
+              game();
+            },
+            child: const Text(
+              'Start game',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              "Enter the translation of the word below:",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                    width: 200,
-                    height: 70,
-                    child: TextField(
-                      controller: _textFieldInput,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                      ),
-                      decoration: InputDecoration(
-                        suffix: IconButton(
-                            icon: Icon(Icons.clear),
-                            onPressed: () {
-                              _textFieldInput.clear();
-                            }),
-                        border: OutlineInputBorder(),
-                        labelText: 'Translation',
-                        labelStyle: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 20,
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                    )),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigo[300],
-                  ),
-                  onPressed: () async {
-                    game();
-                  },
-                  child: const Text(
-                    'Submit',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            "Enter the translation of the word below: $foreignWord",
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          SizedBox(height: 10),
+          Container(
+              width: 350,
+              height: 70,
+              child: TextField(
+                controller: _textFieldInput,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
                 ),
-              ],
-            )
-          ],
-        ),
-      ),
+                decoration: InputDecoration(
+                  suffix: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        _textFieldInput.clear();
+                      }),
+                  border: OutlineInputBorder(),
+                  labelText: 'Translation',
+                  labelStyle: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 20,
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+              )),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.indigo[300],
+            ),
+            onPressed: () async {
+              checkAnswer();
+              if (checkAnswer() == true) {
+                print("Correct answer");
+              } else {
+                print("Wrong answer");
+              }
+              game();
+            },
+            child: const Text(
+              'Submit',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }
