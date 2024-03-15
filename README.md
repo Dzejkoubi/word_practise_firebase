@@ -1,75 +1,98 @@
-# English words practise
+# Flutter Project Documentation: Word Practice Game with Firebase Integration
 
-> Flutter aplikace na procvičování anglických slovíček z češtiny do angličtiny a nazpátek
+## Overview
 
-## Jak hrát?
+This Flutter project is a simple word practice game that integrates Firebase Realtime Database to fetch words for translation exercises. It demonstrates the use of Flutter for building a UI and Firebase for backend data management, offering a practical example of how to set up and use Firebase in a Flutter application.
 
-- Hráčovi se otevře obrazovka s tlačítkem play. Po stisknutí tlačítka se hráčovi objeví anglické nebo české slovo a pod ním textové pole na zadání správného předkladu.
-- Zároveň pokud to slovo dovoluje tak má vedle napsanou nápovědu, kterou může odhalit.
-- Hráč zadá slovo o kterém si myslí že je překladem zadaného slova
-  - Pokud je slovo správně, přičte se mu bod
-  - Pokud špatně odečte se mu bod
-  - Pokud hráč neví může kliknout, po okrytí nápovědy, na tlačítko nevím a odečte se mu bod
-- Pak se změní text překládaného slova a loop se opakuje
-- Hra nemá konec jelikož minimální počet bodů je 0
-- Hráč může ovšem překonávat své skóre
+## Project Setup
 
----
+### Dependencies
 
-## Podrobnosti ke hraní
+- Flutter SDK
+- Firebase
+- Dart
 
-- Hráč si může nastavit zda překládat slova pouze z angličtiny do češtiny, naopak nebo obousměrně
-  - Obousměrně - zadávané slovo může být jak v Češtině tak v Angličtině
-- Přidávání vlastních slov
-  - Hráč má na hlavní stránce možnost jít na stránku databáze jeho slov a přidat vlastní slovo
-  - Teoreticky může hráč přidat do databáze jaké koliv slova
+### Core Packages
 
----
+```dart
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/widgets.dart';
+import 'dart:math';
+```
 
-## Vysvětlení kódu
+### Additional Files
 
-> I s tím co ještě není přidané
+- `firebase_options.dart`: Contains the Firebase project configuration.
+- Pages and utilities:
+  - `pages/screens/wordsDatabase.dart`
+  - `utils/helper_widgets.dart`
 
-- **Základní verze hry**
-  - JSON se slovy se musí konvertovat na Dart class “word-list” která v sobě má další calss-y “word-one” které obsahují slova a jejich překlady
-    - JSON soubor má takovouhle strukturu
-    ```json
-    {
-      "words": [
-        {
-          "czech": ["výběr", "odstoupení"],
-          "english": ["withdrawal"],
-          "hint": ["od smlouvy"]
-        }
-      ]
-    }
-    ```
-    - Nebo je backend, tedy seznam slov, zajištěný na firebase-ce
-      - Ještě nevím jak udělat
-  - Jedno z class ze classy “word-list” se vybere a jedno ze slov se napíše do pole “quessed-word”
-  - Hráč odpoví - klikne na tlačítko “odpovědět” nebo “enter” a to spustí funkci, která zkontroluje zda je to správně
-    - Správně = přičte se jeden bod
-    - Špatně = odečte se jeden bod
-  - Pokud klidkne na nevím = odečte se jeden bod
-  - Repeat
-- **Přidávání vlastních slov**
-  - Na hlavní stránce je v dolní liště tlačítko “Your words”
-    - Když ho hráč rozklikne otevře se mu stránka “Your words”
-  - Zde je za pomoci build list widgetu vygenerovaný seznam slov
-  - Nahoře tím je tlačítko add word
-    - Spustí funkce která otevře pole
-      - Czech word
-      - English word
-      - Hint(nepovinné)
-    - Do těchto polí zadá uživatel slova
-    - Poté klikne na dolní tlačítko přidat a to překonvertuje celou dabase do json file a tím se slovo přidá
-  - Pokud chce uživatel slovo odebrat tak je u slova ikona koše na tu když klikne tak se otevře popUp potvrzení
-    - Pokud klikne na potvrdit tak se odebere slovo z classy a překonvertuje zase classu na json
-  - Pak může kliknout uživatel na šipku zpět v levém horním rohu a to ho přenese na hlavní stránku
+## Main Function
 
-### Co přidat v budoucnu
+The `main()` function initializes Firebase and runs the app:
 
-- Login system
-  - Firebase database
-  - Uživatel má svoje slova v databázi
-- Více databází/seznamů slov
+```dart
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp(),));
+}
+```
+
+## MyApp Class
+
+`MyApp` is a `StatefulWidget` that initializes the application's UI.
+
+### State Management
+
+The `_MyAppState` class manages the state of the application, including:
+
+- Firebase app initialization
+- DatabaseReference setup
+- Game logic variables
+- Methods for game logic and UI interaction
+
+### Firebase Integration
+
+A Firebase Realtime Database is used to store and retrieve words for the game. The `game()` method asynchronously fetches words from Firebase, randomly selects a word, and updates the UI accordingly.
+
+### UI Layout
+
+The UI is built using Flutter widgets, structured as follows:
+
+- AppBar: Displays the title of the application.
+- FloatingActionButton: Navigates to a screen for adding new words to the database.
+- TextField: Allows the user to enter their translation of the word.
+- Buttons: Include a submit button for checking the translation and a hint button for showing partial words.
+
+## Game Logic
+
+The core game logic includes:
+
+- Fetching words from Firebase and updating the state.
+- Randomly selecting an English or Czech word for translation.
+- Checking the user's answer against the correct translation.
+- Providing hints by revealing letters of the word.
+
+## Methods
+
+- `game()`: Fetches words from Firebase, updates game variables, and refreshes the UI.
+- `checkAnswer()`: Checks if the user's translation is correct.
+- `printValues()`: Debug method for printing current game values to the console.
+- `content()`: Builds the content of the app, including the translation exercise and controls.
+
+## Usage
+
+To run the application:
+
+1. Ensure you have Flutter and Dart installed and set up.
+2. Clone the project repository.
+3. Navigate to the project directory in your terminal.
+4. Run `flutter pub get` to install dependencies.
+5. Run `flutter run` to build and launch the application on your device or emulator.
+
+## Note
+
+Ensure your Firebase project is set up correctly and the `firebase_options.dart` file is configured with your project's specific settings.
