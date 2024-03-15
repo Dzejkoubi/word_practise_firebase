@@ -1,4 +1,4 @@
-# Flutter Project Documentation: Word Practice Game with Firebase Integration
+# Word Practice Game with Firebase Integration
 
 ## Overview
 
