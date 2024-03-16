@@ -41,3 +41,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# google-services.json is a configuration file for Firebase
+/android/app/google-services.json
+
