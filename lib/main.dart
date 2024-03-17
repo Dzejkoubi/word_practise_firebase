@@ -181,7 +181,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
         children: <Widget>[
           const Text(
-            "Translate the word:",
+            "Translate the word:", //Word to translate
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Text(
