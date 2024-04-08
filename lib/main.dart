@@ -10,6 +10,7 @@ import 'dart:math';
 import 'firebase_options.dart';
 import 'package:word_practise_firebase/pages/screens/wordsDatabase.dart';
 import 'package:word_practise_firebase/utils/helper_widgets.dart';
+import 'package:word_practise_firebase/pages/screens/navBar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
   int czOrEn = 0;
   //Other variables
   String afterSubmitText = "";
-  String hintText = "";
+  String hintText = "hinted word here";
   int showedWords = 0;
 
   Future<void> game() async {
@@ -138,16 +139,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         title: 'Word Practise',
         home: Scaffold(
-          floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => wordsDatabase()),
-              );
-            },
-            label: Text('Add Words'),
-            icon: Icon(Icons.add),
-          ),
+          // floatingActionButton: FloatingActionButton.extended(
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => wordsDatabase()),
+          //     );
+          //   },
+          //   label: Text('Add Words'),
+          //   icon: Icon(Icons.add),
+          // ),
           appBar: AppBar(
             backgroundColor: Colors.indigo[700],
             title: const Text(
@@ -166,7 +167,11 @@ class _MyAppState extends State<MyApp> {
                 if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (snapshot.hasData) {
-                  return content();
+                  return Column(
+                    children: <Widget>[
+                      motionBar(),
+                    ],
+                  );
                 } else {
                   return const Center(child: CircularProgressIndicator());
                 }
