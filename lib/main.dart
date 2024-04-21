@@ -1,16 +1,18 @@
 //Core packages
 import 'package:flutter/material.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/widgets.dart';
+import 'package:word_practise_firebase/pages/game.dart';
 //Packages
 import 'dart:math';
 
 //Pages
 import 'firebase_options.dart';
-import 'package:word_practise_firebase/pages/screens/wordsDatabase.dart';
-import 'package:word_practise_firebase/utils/helper_widgets.dart';
-import 'package:word_practise_firebase/pages/screens/navBar.dart';
+import 'package:word_practise_firebase/components/helperWidgets.dart';
+//Widgets
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,8 +22,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      home: Game(),
     ),
   );
 }
@@ -34,13 +35,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //Run the game function when the app starts
+  @override
+  void initState() {
+    super.initState();
+    game();
+  }
+
+  //Prints the values of the variables
+  void printValues() {
+    print(
+        "Word count: $wordsCount \n Word number: $wordNumber \n English words: $englishWords \n Czech words: $czechWords \n English words length: $englishWordsLength \n Czech words length: $czechWordsLength \n Foreign word: $foreignWord \n CZ or EN: $czOrEn \n");
+  }
+
+  //Text field controller
   final _textFieldInput = TextEditingController();
+
+  //Firebase variables
   final Future<FirebaseApp> _fApp = Firebase.initializeApp();
   final ref = FirebaseDatabase(
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
       .ref();
-  //Variables
+
   //Game function variables
   int wordsCount = 0;
   int wordNumber = 0;
@@ -50,16 +67,19 @@ class _MyAppState extends State<MyApp> {
   int englishWordsLength = 0;
   int czechWordsLength = 0;
   int czOrEn = 0;
+
   //Other variables
   String afterSubmitText = "";
   String hintText = "hinted word here";
   int showedWords = 0;
 
+  //Game function
   Future<void> game() async {
     final wordsRef = FirebaseDatabase.instance.ref().child("words");
 
     // Getting the total number of words in the database
     final snapshot = await wordsRef.get();
+
     if (snapshot.exists && snapshot.value is List) {
       List<dynamic> words = snapshot.value as List<dynamic>;
 
@@ -106,6 +126,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  //Check if the answer is correct
   bool checkAnswer() {
     if (czOrEn == 0) {
       if (czechWords.contains(_textFieldInput.text)) {
@@ -123,60 +144,70 @@ class _MyAppState extends State<MyApp> {
     return true;
   }
 
-  void printValues() {
-    print(
-        "Word count: $wordsCount \n Word number: $wordNumber \n English words: $englishWords \n Czech words: $czechWords \n English words length: $englishWordsLength \n Czech words length: $czechWordsLength \n Foreign word: $foreignWord \n CZ or EN: $czOrEn \n");
+  int _selectedIndex = 1;
+
+  static const List<Widget> _pages = <Widget>[
+    Text('Your Words'),
+    MyApp(),
+    Text('User Centre'),
+  ];
+
+  void _onNavItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    game();
+  Widget navbar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list),
+          label: 'Your Words',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.play_arrow),
+          label: 'Practise',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          label: 'User Centre',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      onTap: _onNavItemTapped,
+      iconSize: 35,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Word Practise',
-        home: Scaffold(
-          // floatingActionButton: FloatingActionButton.extended(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => wordsDatabase()),
-          //     );
-          //   },
-          //   label: Text('Add Words'),
-          //   icon: Icon(Icons.add),
-          // ),
-          appBar: AppBar(
-            backgroundColor: Colors.indigo[700],
-            title: const Text(
-              'Word Practise',
-              style: TextStyle(
-                color: Color(0xFF90CAF9),
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-            centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo[700],
+        title: const Text(
+          'Word Practise',
+          style: TextStyle(
+            color: Color(0xFF90CAF9),
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
           ),
-          body: FutureBuilder(
-              future: _fApp,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else if (snapshot.hasData) {
-                  return Column(
-                    children: <Widget>[
-                      motionBar(),
-                    ],
-                  );
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              }),
-        ));
+        ),
+        centerTitle: true,
+      ),
+      bottomNavigationBar: navbar(),
+      body: FutureBuilder(
+          future: _fApp,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              return content();
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
+    );
   }
 
   Widget content() {
@@ -214,7 +245,6 @@ class _MyAppState extends State<MyApp> {
                           onPressed: () {
                             _textFieldInput.clear();
                           }),
-                      border: OutlineInputBorder(),
                       labelText: 'Translation',
                       labelStyle: const TextStyle(
                         color: Colors.grey,
