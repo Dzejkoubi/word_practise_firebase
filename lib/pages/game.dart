@@ -17,6 +17,7 @@ class Game extends StatefulWidget {
 }
 
 class GameState extends State<Game> {
+  @override
   void initState() {
     super.initState();
     game();
@@ -28,11 +29,7 @@ class GameState extends State<Game> {
         "Word count: $wordsCount \n Word number: $wordNumber \n English words: $englishWords \n Czech words: $czechWords \n English words length: $englishWordsLength \n Czech words length: $czechWordsLength \n Foreign word: $foreignWord \n CZ or EN: $czOrEn \n");
   }
 
-  //Text field controller
-  final _textFieldInput = TextEditingController();
-
   //Firebase variables
-  final Future<FirebaseApp> _fApp = Firebase.initializeApp();
   final ref = FirebaseDatabase(
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -49,11 +46,13 @@ class GameState extends State<Game> {
   int czOrEn = 0;
 
   //Other variables
+  final _textFieldInput = TextEditingController();
   String afterSubmitText = "";
   String hintText = "hinted word here";
   int showedWords = 0;
 
   //Game function
+
   Future<void> game() async {
     final wordsRef = FirebaseDatabase.instance.ref().child("words");
 
@@ -107,6 +106,7 @@ class GameState extends State<Game> {
   }
 
   //Check if the answer is correct
+
   bool checkAnswer() {
     if (czOrEn == 0) {
       if (czechWords.contains(_textFieldInput.text)) {
@@ -123,6 +123,8 @@ class GameState extends State<Game> {
     }
     return true;
   }
+
+  //Runs when check button is pressed
 
   void checkButton() async {
     checkAnswer();
@@ -172,6 +174,8 @@ class GameState extends State<Game> {
     });
   }
 
+  //Hint function
+
   void hint() {
     showedWords++;
     setState(() {
@@ -187,10 +191,9 @@ class GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Expanded(
-            child: Center(
-                child: Column(children: <Widget>[
+    return Expanded(
+        child: Center(
+            child: Column(children: <Widget>[
       addVerticalSpace(120),
 
       //Picture for the word -- if no picture available, show a message
@@ -245,11 +248,8 @@ class GameState extends State<Game> {
         children: <Widget>[
           ElevatedButton(
               onPressed: hint,
-              child: Row(
-                children: [
-                  Text("hint"),
-                  const Icon(Icons.question_mark_rounded)
-                ],
+              child: const Row(
+                children: [Text("hint"), Icon(Icons.question_mark_rounded)],
               )),
           addHorizontalSpace(40),
           Text(hintText, style: const TextStyle(fontSize: 20)),
@@ -266,6 +266,6 @@ class GameState extends State<Game> {
         afterSubmitText,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-    ]))));
+    ])));
   }
 }
