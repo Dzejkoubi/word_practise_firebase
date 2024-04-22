@@ -33,3 +33,21 @@ class NormalText extends StatelessWidget {
     );
   }
 }
+
+class PageTitle extends StatelessWidget {
+  const PageTitle({super.key, required this.text, this.fontSize});
+
+  final String text;
+  final double? fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize ?? 24,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}

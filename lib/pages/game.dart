@@ -45,11 +45,14 @@ class GameState extends State<Game> {
   int czechWordsLength = 0;
   int czOrEn = 0;
 
-  //Other variables
   final _textFieldInput = TextEditingController();
+
+  //Checking the answer
   String afterSubmitText = "";
   String hintText = "hinted word here";
   int showedWords = 0;
+  String selectedWord = "";
+  bool isWordSelected = false;
 
   //Game function
 
@@ -170,21 +173,28 @@ class GameState extends State<Game> {
     _textFieldInput.clear();
     setState(() {
       showedWords = 0;
-      hintText = "hinted word here";
+      hintText = "hint word";
+      isWordSelected = false;
     });
   }
 
   //Hint function
 
   void hint() {
-    showedWords++;
     setState(() {
-      if (czOrEn == 0 && czechWordsLength > 0) {
-        hintText = czechWords[Random().nextInt(czechWordsLength)]
-            .substring(0, min(showedWords, czechWordsLength));
-      } else if (englishWordsLength > 0) {
-        hintText = englishWords[Random().nextInt(englishWordsLength)]
-            .substring(0, min(showedWords, englishWordsLength));
+      if (!isWordSelected) {
+        if (czOrEn == 0 && czechWords.isNotEmpty) {
+          selectedWord = czechWords[Random().nextInt(czechWords.length)];
+          isWordSelected = true;
+        } else if (englishWords.isNotEmpty) {
+          selectedWord = englishWords[Random().nextInt(englishWords.length)];
+          isWordSelected = true;
+        }
+      }
+
+      if (showedWords < selectedWord.length) {
+        showedWords++;
+        hintText = selectedWord.substring(0, showedWords);
       }
     });
   }
@@ -194,8 +204,6 @@ class GameState extends State<Game> {
     return Container(
         child: Center(
             child: Column(children: <Widget>[
-      addVerticalSpace(120),
-
       //Picture for the word -- if no picture available, show a message
 
       Container(
@@ -211,6 +219,7 @@ class GameState extends State<Game> {
               child: NormalText(
             text: 'No picture available',
           ))),
+
       addVerticalSpace(20),
       ImportantText(text: foreignWord),
       addVerticalSpace(20),
@@ -236,31 +245,37 @@ class GameState extends State<Game> {
                   _textFieldInput.clear();
                 }),
           ),
+          onSubmitted: (value) {
+            checkButton();
+          },
+          autofocus: true,
+          focusNode: FocusNode()..requestFocus(),
         ),
       ),
       addVerticalSpace(20),
 
       //Submit button
 
-      BasicButton(onPressed: checkButton, text: "Check"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(
-              onPressed: hint,
-              child: const Row(
-                children: [Text("hint"), Icon(Icons.question_mark_rounded)],
-              )),
-          addHorizontalSpace(40),
-          Text(hintText, style: const TextStyle(fontSize: 20)),
+        children: [
+          ValueListenableBuilder(
+            valueListenable: _textFieldInput,
+            builder:
+                (BuildContext context, TextEditingValue value, Widget? child) {
+              return BasicElevatedButton(
+                text: "Check",
+                onPressed: value.text.isEmpty ? null : checkButton,
+              );
+            },
+          ),
+          addHorizontalSpace(20),
+          BasicElevatedButton(text: "Hint", onPressed: hint),
         ],
       ),
-      ElevatedButton(
-          child: Text("Random ASSbutton"),
-          onPressed: () {
-            printValues();
-            _textFieldInput.clear();
-          }),
+      const SizedBox(height: 20),
+      Text(hintText, style: const TextStyle(fontSize: 20)),
+      BasicElevatedButton(text: "Print Values", onPressed: printValues),
       addVerticalSpace(15),
       Text(
         afterSubmitText,

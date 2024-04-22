@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:word_practise_firebase/components/styles/textStyles.dart';
 import 'package:word_practise_firebase/firebase_options.dart';
 import 'package:word_practise_firebase/pages/game.dart';
 import 'package:word_practise_firebase/pages/userCenter.dart';
@@ -19,7 +21,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   final List<Widget> _navBarWidgets = <Widget>[
     const WordsDatabases(),
@@ -27,7 +29,7 @@ class _MainState extends State<Main> {
     const UserCentre(),
   ];
 
-  void _onItemTapped(int index) {
+  void navBarHandler(int index) {
     setState(() {
       _selectedIndex = index; // Updating the current tab index on tap
     });
@@ -41,8 +43,8 @@ class _MainState extends State<Main> {
         label: 'Words',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.gamepad),
-        label: 'Game',
+        icon: Icon(Icons.play_arrow_rounded),
+        label: 'Practise',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person_rounded),
@@ -53,17 +55,38 @@ class _MainState extends State<Main> {
     return MaterialApp(
         title: 'Word Practise',
         home: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Navigate to the settings page
+              },
+            ),
+            title: const PageTitle(text: 'Word Practise'),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.account_circle),
+                onPressed: () {
+                  // Navigate to the user profile page
+                  setState(() {
+                    _selectedIndex = 2;
+                  });
+                },
+              ),
+            ],
+          ),
           body: _navBarWidgets[_selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
             items: navBarItems,
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.amber[800],
-            onTap: _onItemTapped,
+            onTap: navBarHandler,
           ),
         ));
   }
 }
 
+//Game screen widget
 //Game loader widget to load the game screen after Firebase initialization
 //Path: lib/pages/game.dart
 class FuntureGameLoader extends StatefulWidget {
@@ -100,10 +123,20 @@ class FuntureGameLoaderState extends State<FuntureGameLoader> {
         // Otherwise, show loading button
 
         return const Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
+            body: Center(
+                child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                color: Colors.amber,
+              ),
+              Text("Loading game...",
+                  style: TextStyle(fontSize: 15, color: Colors.black)),
+            ],
           ),
-        );
+        )));
       },
     );
   }
