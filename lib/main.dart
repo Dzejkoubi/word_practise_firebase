@@ -19,7 +19,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   final List<Widget> _navBarWidgets = <Widget>[
     const WordsDatabases(),
@@ -35,25 +35,27 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
+    const navBarItems = <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.list),
+        label: 'Words',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.gamepad),
+        label: 'Game',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person_rounded),
+        label: 'User',
+      ),
+    ];
+
     return MaterialApp(
         title: 'Word Practise',
         home: Scaffold(
-          body: FuntureGameLoader(),
+          body: _navBarWidgets[_selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.book),
-                label: 'Words',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.gamepad),
-                label: 'Game',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'User',
-              ),
-            ],
+            items: navBarItems,
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.amber[800],
             onTap: _onItemTapped,
@@ -62,6 +64,8 @@ class _MainState extends State<Main> {
   }
 }
 
+//Game loader widget to load the game screen after Firebase initialization
+//Path: lib/pages/game.dart
 class FuntureGameLoader extends StatefulWidget {
   const FuntureGameLoader({super.key});
 

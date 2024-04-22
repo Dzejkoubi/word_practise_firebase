@@ -191,7 +191,7 @@ class GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
         child: Center(
             child: Column(children: <Widget>[
       addVerticalSpace(120),
