@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:word_practise_firebase/components/styles/textStyles.dart';
 import 'package:word_practise_firebase/firebase_options.dart';
-import 'package:word_practise_firebase/pages/game.dart';
+import 'package:word_practise_firebase/pages/practise.dart';
 import 'package:word_practise_firebase/pages/userCenter.dart';
-import 'package:word_practise_firebase/pages/wordDatabase.dart';
+import 'package:word_practise_firebase/pages/yourWords.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,11 +21,11 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   final List<Widget> _navBarWidgets = <Widget>[
-    const WordsDatabases(),
-    const FuntureGameLoader(),
+    const YourWords(),
+    const FuturePractiseLoader(),
     const UserCentre(),
   ];
 
@@ -93,14 +93,14 @@ class _MainState extends State<Main> {
 //Game screen widget
 //Game loader widget to load the game screen after Firebase initialization
 //Path: lib/pages/game.dart
-class FuntureGameLoader extends StatefulWidget {
-  const FuntureGameLoader({super.key});
+class FuturePractiseLoader extends StatefulWidget {
+  const FuturePractiseLoader({super.key});
 
   @override
-  State<FuntureGameLoader> createState() => FuntureGameLoaderState();
+  State<FuturePractiseLoader> createState() => FuturePractiseLoaderState();
 }
 
-class FuntureGameLoaderState extends State<FuntureGameLoader> {
+class FuturePractiseLoaderState extends State<FuturePractiseLoader> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

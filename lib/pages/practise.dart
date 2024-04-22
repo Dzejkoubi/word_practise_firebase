@@ -226,6 +226,7 @@ class GameState extends State<Game> {
       //Text field for the user to enter the word
 
       Container(
+        height: 80,
         width: 320,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(

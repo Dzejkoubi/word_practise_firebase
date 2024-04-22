@@ -33,7 +33,11 @@ class BasicButton extends StatelessWidget {
 }
 
 class BasicElevatedButton extends StatelessWidget {
-  const BasicElevatedButton({super.key, this.onPressed, required this.text});
+  const BasicElevatedButton({
+    super.key,
+    required this.text,
+    this.onPressed,
+  });
 
   final String text;
   final void Function()? onPressed;
