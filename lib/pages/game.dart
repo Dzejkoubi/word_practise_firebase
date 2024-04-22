@@ -201,9 +201,8 @@ class GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Center(
-            child: Column(children: <Widget>[
+    return Center(
+        child: Column(children: <Widget>[
       //Picture for the word -- if no picture available, show a message
 
       Container(
@@ -281,6 +280,6 @@ class GameState extends State<Game> {
         afterSubmitText,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-    ])));
+    ]));
   }
 }

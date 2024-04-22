@@ -21,7 +21,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   final List<Widget> _navBarWidgets = <Widget>[
     const WordsDatabases(),
@@ -40,7 +40,7 @@ class _MainState extends State<Main> {
     const navBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Icons.list),
-        label: 'Words',
+        label: 'Your Words',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.play_arrow_rounded),
@@ -51,9 +51,13 @@ class _MainState extends State<Main> {
         label: 'User',
       ),
     ];
-
+    const pageTitles = <String>[
+      'Your Words List',
+      'Word Practise',
+      'User Centre',
+    ];
     return MaterialApp(
-        title: 'Word Practise',
+        title: "Word Practise",
         home: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -62,7 +66,7 @@ class _MainState extends State<Main> {
                 // Navigate to the settings page
               },
             ),
-            title: const PageTitle(text: 'Word Practise'),
+            title: PageTitle(text: pageTitles[_selectedIndex]),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.account_circle),
