@@ -21,7 +21,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   final List<Widget> _navBarWidgets = <Widget>[
     const YourWords(),

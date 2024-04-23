@@ -16,7 +16,7 @@ class _BasicTextFieldState extends State<BasicTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
       height: 80,
       decoration: BoxDecoration(
           color: Colors.grey[200],

@@ -49,7 +49,7 @@ class GameState extends State<Game> {
 
   //Checking the answer
   String afterSubmitText = "";
-  String hintText = "hinted word here";
+  String hintText = "";
   int showedWords = 0;
   String selectedWord = "";
   bool isWordSelected = false;
@@ -173,7 +173,7 @@ class GameState extends State<Game> {
     _textFieldInput.clear();
     setState(() {
       showedWords = 0;
-      hintText = "hint word";
+      hintText = "";
       isWordSelected = false;
     });
   }
@@ -274,13 +274,10 @@ class GameState extends State<Game> {
         ],
       ),
       const SizedBox(height: 20),
-      Text(hintText, style: const TextStyle(fontSize: 20)),
+      NormalText(text: hintText),
       BasicElevatedButton(text: "Print Values", onPressed: printValues),
       addVerticalSpace(15),
-      Text(
-        afterSubmitText,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-      ),
+      ImportantText(text: afterSubmitText),
     ]));
   }
 }
