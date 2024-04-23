@@ -142,7 +142,7 @@ class GameState extends State<Game> {
             List<String> otherAnswers = List<String>.from(czechWords);
             otherAnswers.remove(_textFieldInput.text);
             afterSubmitText =
-                "Další správné odpovědi byly: \n${otherAnswers.join(" nebo ")} ";
+                "Správně také bylo: \n${otherAnswers.join(" nebo ")} ";
             print(otherAnswers.join(" nebo "));
           },
         );
@@ -152,7 +152,7 @@ class GameState extends State<Game> {
             List<String> otherAnswers = List<String>.from(englishWords);
             otherAnswers.remove(_textFieldInput.text);
             afterSubmitText =
-                "Další správné odpovědi byly: \n${otherAnswers.join(" or ")} ";
+                "Správně také bylo: \n${otherAnswers.join(" or ")} ";
             print(afterSubmitText);
           },
         );
