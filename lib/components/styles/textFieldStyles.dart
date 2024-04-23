@@ -16,24 +16,26 @@ class _BasicTextFieldState extends State<BasicTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
       height: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
           color: Colors.grey[200],
           boxShadow: AppShadows.customBoxShadow,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.black, width: 1.5)),
-      child: TextField(
-        controller: widget.controller,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: widget.hintText,
-          suffix: IconButton(
-            icon: const Icon(Icons.clear),
-            color: Colors.black,
-            onPressed: () {
-              widget.controller?.clear();
-            },
+      child: Center(
+        child: TextField(
+          controller: widget.controller,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: widget.hintText,
+            suffix: IconButton(
+              icon: const Icon(Icons.clear),
+              color: Colors.black,
+              onPressed: () {
+                widget.controller?.clear();
+              },
+            ),
           ),
         ),
       ),

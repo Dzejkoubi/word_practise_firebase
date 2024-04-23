@@ -10,8 +10,11 @@ class YourWords extends StatefulWidget {
 class _YourWordsState extends State<YourWords> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Text('Words Database'),
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[],
+      ),
     );
   }
 }
