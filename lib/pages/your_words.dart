@@ -1,6 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:word_practise_firebase/components/styles/button_styles.dart';
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
+import 'package:word_practise_firebase/global_functions.dart';
 
 class YourWords extends StatefulWidget {
   const YourWords({super.key});
@@ -13,16 +15,6 @@ class _YourWordsState extends State<YourWords> {
   List<dynamic> englishWords = [];
   List<dynamic> czechWords = [];
   int wordsCount = 0;
-
-  Future<void> getWords() async {
-    final wordsRef = FirebaseDatabase.instance.ref().child("words/0/english/0");
-
-    final snapshot = await wordsRef.get();
-
-    List<dynamic> words = snapshot.value as List<dynamic>;
-
-    print("Snapshot: $words");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +46,6 @@ class _YourWordsState extends State<YourWords> {
             indent: 20,
             endIndent: 20,
           ),
-          FloatingActionButton(
-              onPressed: getWords, child: const Text("Get words")),
         ],
       ),
     );
@@ -65,7 +55,8 @@ class _YourWordsState extends State<YourWords> {
 //----------------------------------------------------
 
 class Word extends StatefulWidget {
-  Word({super.key, required this.english, required this.czech, this.image});
+  const Word(
+      {super.key, required this.english, required this.czech, this.image});
 
   final String english;
   final String czech;

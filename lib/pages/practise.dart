@@ -29,7 +29,7 @@ class GameState extends State<Game> {
   }
 
   //Firebase variables
-  final ref = FirebaseDatabase(
+  final DatabaseReference ref = FirebaseDatabase(
           databaseURL:
               "https://word-pracise-cz-en-default-rtdb.europe-west1.firebasedatabase.app/")
       .ref();

@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:word_practise_firebase/components/styles/textStyles.dart';
+import 'package:word_practise_firebase/components/styles/text_styles.dart';
 import 'package:word_practise_firebase/firebase_options.dart';
 import 'package:word_practise_firebase/pages/practise.dart';
-import 'package:word_practise_firebase/pages/userCenter.dart';
-import 'package:word_practise_firebase/pages/yourWords.dart';
+import 'package:word_practise_firebase/pages/user_centre.dart';
+import 'package:word_practise_firebase/pages/your_words.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +35,8 @@ class _MainState extends State<Main> {
       _selectedIndex = index; // Updating the current tab index on tap
     });
   }
+
+  final wordsRef = FirebaseDatabase.instance.ref().child("words");
 
   @override
   Widget build(BuildContext context) {

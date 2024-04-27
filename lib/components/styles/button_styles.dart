@@ -111,6 +111,5 @@ class IconButtonStyle extends StatelessWidget {
         child: NormalText(
           text: text,
         ));
-    ;
   }
 }
