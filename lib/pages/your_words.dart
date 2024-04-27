@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/components/styles/buttonStyles.dart';
-import 'package:word_practise_firebase/components/styles/textStyles.dart';
-import 'package:word_practise_firebase/components/helperWidgets.dart';
+import 'package:word_practise_firebase/components/styles/text_styles.dart';
 
 class YourWords extends StatefulWidget {
   const YourWords({super.key});

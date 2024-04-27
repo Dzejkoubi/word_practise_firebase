@@ -1,12 +1,11 @@
 import 'dart:math';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/components/styles/buttonStyles.dart';
-import 'package:word_practise_firebase/components/styles/generalStyles.dart';
-import 'package:word_practise_firebase/components/styles/textStyles.dart';
-import 'package:word_practise_firebase/components/helperWidgets.dart';
+import 'package:word_practise_firebase/components/styles/button_styles.dart';
+import 'package:word_practise_firebase/components/styles/general_styles.dart';
+import 'package:word_practise_firebase/components/styles/text_styles.dart';
+import 'package:word_practise_firebase/components/helper_widgets.dart';
 //Firebase
 
 class Game extends StatefulWidget {

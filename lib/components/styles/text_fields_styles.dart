@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/components/styles/generalStyles.dart';
-import 'package:word_practise_firebase/components/styles/textStyles.dart';
+import 'package:word_practise_firebase/components/styles/general_styles.dart';
 
 class BasicTextField extends StatefulWidget {
   const BasicTextField({super.key, this.controller, this.hintText});

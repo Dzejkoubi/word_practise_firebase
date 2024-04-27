@@ -1,5 +1,5 @@
+import 'package:word_practise_firebase/components/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/components/styles/textStyles.dart';
 
 class BasicButton extends StatelessWidget {
   const BasicButton({super.key, this.onPressed, required this.text});

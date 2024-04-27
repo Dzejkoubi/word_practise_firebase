@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:word_practise_firebase/components/helperWidgets.dart';
-import 'package:word_practise_firebase/components/styles/buttonStyles.dart';
-import 'package:word_practise_firebase/components/styles/textFieldStyles.dart';
-import 'package:word_practise_firebase/components/helperWidgets.dart';
+import 'package:word_practise_firebase/components/helper_widgets.dart';
+import 'package:word_practise_firebase/components/styles/button_styles.dart';
+import 'package:word_practise_firebase/components/styles/text_fields_styles.dart';
 
 class UserCentre extends StatefulWidget {
   const UserCentre({super.key});
