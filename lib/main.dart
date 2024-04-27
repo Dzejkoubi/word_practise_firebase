@@ -7,9 +7,10 @@ import 'package:word_practise_firebase/pages/practise.dart';
 import 'package:word_practise_firebase/pages/userCenter.dart';
 import 'package:word_practise_firebase/pages/yourWords.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Main());
+  await Firebase.initializeApp();
+  runApp(const Main());
 }
 
 class Main extends StatefulWidget {
@@ -79,7 +80,10 @@ class _MainState extends State<Main> {
               ),
             ],
           ),
-          body: _navBarWidgets[_selectedIndex],
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: _navBarWidgets[_selectedIndex],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: navBarItems,
             currentIndex: _selectedIndex,

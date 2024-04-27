@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:word_practise_firebase/components/styles/buttonStyles.dart';
 import 'package:word_practise_firebase/components/styles/textStyles.dart';
+import 'package:word_practise_firebase/components/helperWidgets.dart';
 
 class YourWords extends StatefulWidget {
   const YourWords({super.key});
@@ -11,6 +14,20 @@ class YourWords extends StatefulWidget {
 }
 
 class _YourWordsState extends State<YourWords> {
+  List<dynamic> englishWords = [];
+  List<dynamic> czechWords = [];
+  int wordsCount = 0;
+
+  Future<void> getWords() async {
+    final wordsRef = FirebaseDatabase.instance.ref().child("words/0/english/0");
+
+    final snapshot = await wordsRef.get();
+
+    List<dynamic> words = snapshot.value as List<dynamic>;
+
+    print("Snapshot: $words");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,15 +40,15 @@ class _YourWordsState extends State<YourWords> {
             children: [
               Container(
                 padding: const EdgeInsets.all(20),
-                child: ImportantText(text: "Anglicky"),
+                child: const ImportantText(text: "Anglicky"),
               ),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: ImportantText(text: "Česky"),
+                child: const ImportantText(text: "Česky"),
               ),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: ImportantText(text: "Obrázek"),
+                child: const ImportantText(text: "Obrázek"),
               )
             ],
           ),
@@ -41,15 +58,15 @@ class _YourWordsState extends State<YourWords> {
             indent: 20,
             endIndent: 20,
           ),
-          Word(
-            english: "Happy",
-            czech: "Šťastný",
-          )
+          FloatingActionButton(
+              onPressed: getWords, child: const Text("Get words")),
         ],
       ),
     );
   }
 }
+
+//----------------------------------------------------
 
 class Word extends StatefulWidget {
   Word({super.key, required this.english, required this.czech, this.image});
@@ -63,6 +80,20 @@ class Word extends StatefulWidget {
 }
 
 class _WordState extends State<Word> {
+  @override
+  Widget build(BuildContext context) {
+    return TestDatabaseView(widget: widget);
+  }
+}
+
+class TestDatabaseView extends StatelessWidget {
+  const TestDatabaseView({
+    super.key,
+    required this.widget,
+  });
+
+  final Word widget;
+
   @override
   Widget build(BuildContext context) {
     return Row(
