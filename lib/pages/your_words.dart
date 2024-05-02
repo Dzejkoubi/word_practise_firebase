@@ -12,9 +12,10 @@ class YourWords extends StatefulWidget {
 }
 
 class _YourWordsState extends State<YourWords> {
-  List<dynamic> englishWords = [];
-  List<dynamic> czechWords = [];
-  int wordsCount = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,77 +47,77 @@ class _YourWordsState extends State<YourWords> {
             indent: 20,
             endIndent: 20,
           ),
+          Expanded(
+            child: WordsScreen(),
+          ),
         ],
       ),
     );
   }
 }
 
-//----------------------------------------------------
+class WordPair {
+  final List<String> czech;
+  final List<String> english;
 
-class Word extends StatefulWidget {
-  const Word(
-      {super.key, required this.english, required this.czech, this.image});
+  WordPair({required this.czech, required this.english});
 
-  final String english;
-  final String czech;
-  final Image? image;
-
-  @override
-  State<Word> createState() => _WordState();
-}
-
-class _WordState extends State<Word> {
-  @override
-  Widget build(BuildContext context) {
-    return TestDatabaseView(widget: widget);
+  factory WordPair.fromMap(Map<dynamic, dynamic> data) {
+    return WordPair(
+      czech: List<String>.from(data['czech']),
+      english: List<String>.from(data['english']),
+    );
   }
 }
 
-class TestDatabaseView extends StatelessWidget {
-  const TestDatabaseView({
-    super.key,
-    required this.widget,
-  });
+class WordsScreen extends StatefulWidget {
+  const WordsScreen({super.key});
 
-  final Word widget;
+  @override
+  _WordsScreenState createState() => _WordsScreenState();
+}
+
+class _WordsScreenState extends State<WordsScreen> {
+  final dbRef = FirebaseDatabase.instance.ref();
+  List<WordPair> words = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    DataSnapshot snapshot = await dbRef.child('words').get();
+    List<WordPair> newWords = [];
+    if (snapshot.exists && snapshot.value != null) {
+      List data = snapshot.value as List;
+      for (var value in data) {
+        if (value != null && value is Map) {
+          newWords.add(WordPair.fromMap(Map<dynamic, dynamic>.from(value)));
+        }
+      }
+      setState(() {
+        words = newWords;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        PopupMenuButton<String>(
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            PopupMenuItem<String>(
-              value: widget.english,
-              child: Text(widget.english),
-            ),
-            PopupMenuItem<String>(
-              value: widget.english,
-              child: Text(widget.english),
-            ),
-          ],
-        ),
-        PopupMenuButton<String>(
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            PopupMenuItem<String>(
-              value: widget.english,
-              child: Text(widget.english),
-            ),
-            PopupMenuItem<String>(
-              value: widget.czech,
-              child: Text(widget.czech),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 40,
-          width: 40,
-          child: Image(
-              image: AssetImage('assets/images/happy.webp'), fit: BoxFit.cover),
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Word Pairs"),
+      ),
+      body: ListView.builder(
+        itemCount: words.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(words[index].english.join(", ")),
+            subtitle: Text(words[index].czech.join(", ")),
+          );
+        },
+      ),
     );
   }
 }
