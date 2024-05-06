@@ -1,6 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:word_practise_firebase/components/helper_widgets.dart';
 import 'package:word_practise_firebase/components/styles/button_styles.dart';
+import 'package:word_practise_firebase/components/styles/text_fields_styles.dart';
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
 import 'package:word_practise_firebase/global_functions.dart';
 
@@ -25,19 +29,58 @@ class _YourWordsState extends State<YourWords> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 padding: const EdgeInsets.all(20),
-                child: const ImportantText(text: "Anglicky"),
+                child: const ImportantText(text: "English"),
               ),
+              addHorizontalSpace(80),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: const ImportantText(text: "Česky"),
+                child: const ImportantText(text: "Czech"),
               ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: const ImportantText(text: "Obrázek"),
+              addHorizontalSpace(5),
+              IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                          height: 500,
+                          child: Column(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(20),
+                                child: ImportantText(text: "Add new word pair"),
+                              ),
+                              const Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: BasicTextField(
+                                    hintText: "Czech",
+                                  )),
+                              const Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: BasicTextField(
+                                    hintText: "Czech",
+                                  )),
+                              IconButtonStyle(
+                                icon: Icons.image_rounded,
+                                text: "Add image",
+                                onPressed: () {},
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: ImportantButton(
+                                  text: "Add",
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ],
+                          ));
+                    },
+                  );
+                },
+                icon: const Icon(Icons.more_horiz_rounded),
               )
             ],
           ),
@@ -47,8 +90,11 @@ class _YourWordsState extends State<YourWords> {
             indent: 20,
             endIndent: 20,
           ),
-          Expanded(
-            child: WordsScreen(),
+          const Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: WordsScreen(),
+            ),
           ),
         ],
       ),
@@ -106,18 +152,48 @@ class _WordsScreenState extends State<WordsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Word Pairs"),
-      ),
       body: ListView.builder(
         itemCount: words.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(words[index].english.join(", ")),
-            subtitle: Text(words[index].czech.join(", ")),
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(words[index].english.join(", ")),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(words[index].czech.join(", ")),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.image_rounded)),
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      dbRef.child('words').remove();
+                      fetchData();
+                    },
+                  ),
+                ],
+              ),
+            ],
           );
         },
       ),
     );
   }
 }
+
+// Text(words[index].english.join(", ")),
+// Text(words[index].czech.join(", ")),

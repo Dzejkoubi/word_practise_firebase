@@ -78,38 +78,90 @@ class BasicElevatedButton extends StatelessWidget {
 }
 
 class IconButtonStyle extends StatelessWidget {
-  const IconButtonStyle(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      required this.icon});
+  const IconButtonStyle({
+    super.key,
+    required this.onPressed,
+    this.text,
+    this.icon,
+  }) : assert(text != null || icon != null,
+            'You must provide either text or an icon.');
+
+  final String? text;
+  final void Function() onPressed;
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> children = [];
+    if (icon != null) {
+      children.add(Icon(icon));
+    }
+    if (text != null) {
+      children.add(Text(text!));
+    }
+
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          Colors.grey[200],
+        ),
+        foregroundColor: MaterialStateProperty.all(
+          Colors.black,
+        ),
+        shadowColor: MaterialStateProperty.all(
+          Colors.grey.withOpacity(0.5),
+        ),
+        elevation: MaterialStateProperty.all(5),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        ),
+      ),
+      autofocus: true,
+      child: Row(
+        mainAxisSize: MainAxisSize
+            .min, // To keep the Row's size just as big as its children
+        children: children,
+      ),
+    );
+  }
+}
+
+class ImportantButton extends StatelessWidget {
+  const ImportantButton(
+      {super.key, this.onPressed, required this.text, this.icon});
 
   final String text;
-  final void Function() onPressed;
-  final IconData icon;
+  final void Function()? onPressed;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            Colors.grey[200],
-          ),
-          foregroundColor: MaterialStateProperty.all(
-            Colors.black,
-          ),
-          shadowColor: MaterialStateProperty.all(
-            Colors.grey.withOpacity(0.5),
-          ),
-          elevation: MaterialStateProperty.all(5),
-          padding: MaterialStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          ),
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          Colors.grey[200],
         ),
-        autofocus: true,
-        child: NormalText(
-          text: text,
-        ));
+        foregroundColor: MaterialStateProperty.all(
+          Colors.black,
+        ),
+        shadowColor: MaterialStateProperty.all(
+          Colors.grey.withOpacity(0.5),
+        ),
+        elevation: MaterialStateProperty.all(5),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) Icon(icon),
+          if (icon != null) const SizedBox(width: 10),
+          Text(text),
+        ],
+      ),
+    );
   }
 }
