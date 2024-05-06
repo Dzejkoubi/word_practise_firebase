@@ -6,7 +6,9 @@ import 'package:word_practise_firebase/components/styles/text_fields_styles.dart
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  final Function() onSignUpSuccess;
+
+  const SignUp({super.key, required this.onSignUpSuccess});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -77,7 +79,23 @@ class _SignUpState extends State<SignUp> {
           controller: _confirmPasswordInput,
           hintText: "Confirm Password",
         ),
-        addVerticalSpace(20),
+        addVerticalSpace(5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Already have an account?",
+              style: TextStyle(color: Colors.grey[700]),
+            ),
+            TextButton(
+              onPressed: () {
+                widget.onSignUpSuccess();
+              },
+              child: const Text("Sign In"),
+            ),
+          ],
+        ),
+        addVerticalSpace(5),
         Expanded(
             child: Container(
           alignment: Alignment.topCenter,
@@ -90,10 +108,7 @@ class _SignUpState extends State<SignUp> {
                     email: _emailInput.text.trim(),
                     password: _passwordInput.text.trim(),
                   );
-                  setState(() {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Sign up successful")));
-                  });
+                  widget.onSignUpSuccess(); // Call the callback here
                 } catch (e) {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Failed to sign up: $e")));

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:word_practise_firebase/components/helper_widgets.dart';
 import 'package:word_practise_firebase/components/styles/button_styles.dart';
@@ -5,7 +6,9 @@ import 'package:word_practise_firebase/components/styles/text_fields_styles.dart
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  final Function onSignInSuccess;
+
+  const SignIn({super.key, required this.onSignInSuccess});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -30,15 +33,39 @@ class _SignInState extends State<SignIn> {
           controller: _passwordInput,
           hintText: "Password",
         ),
-        addVerticalSpace(20),
+        addVerticalSpace(5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Already have an account?",
+              style: TextStyle(color: Colors.grey[700]),
+            ),
+            TextButton(
+              onPressed: () {
+                widget.onSignInSuccess();
+              },
+              child: const Text("Sign In"),
+            ),
+          ],
+        ),
         Expanded(
             child: Container(
           alignment: Alignment.topCenter,
           child: BasicButton(
             text: "Sign In",
-            onPressed: () {
-              print("Email: ${_emailInput.text}");
-              print("Password: ${_passwordInput.text}");
+            onPressed: () async {
+              try {
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: _emailInput.text.trim(),
+                  password: _passwordInput.text.trim(),
+                );
+                widget
+                    .onSignInSuccess(); // Invoke the callback on successful sign in
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Failed to sign in: $e")));
+              }
             },
           ),
         )),
