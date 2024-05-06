@@ -151,7 +151,7 @@ class ImportantButton extends StatelessWidget {
         ),
         elevation: MaterialStateProperty.all(5),
         padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
         ),
       ),
       child: Row(
@@ -159,7 +159,11 @@ class ImportantButton extends StatelessWidget {
         children: [
           if (icon != null) Icon(icon),
           if (icon != null) const SizedBox(width: 10),
-          Text(text),
+          Text(text.toUpperCase(),
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              )),
         ],
       ),
     );

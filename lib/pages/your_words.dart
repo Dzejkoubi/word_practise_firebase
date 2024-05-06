@@ -65,13 +65,13 @@ class _YourWordsState extends State<YourWords> {
                                   )),
                               IconButtonStyle(
                                 icon: Icons.image_rounded,
-                                text: "Add image",
+                                text: "Upload image",
                                 onPressed: () {},
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(20),
                                 child: ImportantButton(
-                                  text: "Add",
+                                  text: "Add Word",
                                   onPressed: () {},
                                 ),
                               ),
@@ -80,7 +80,7 @@ class _YourWordsState extends State<YourWords> {
                     },
                   );
                 },
-                icon: const Icon(Icons.more_horiz_rounded),
+                icon: const Icon(Icons.add_rounded),
               )
             ],
           ),
