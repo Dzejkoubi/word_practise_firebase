@@ -225,7 +225,7 @@ class GameState extends State<Game> {
       //Text field for the user to enter the word
 
       Container(
-        height: 80,
+        height: 70,
         width: 320,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
@@ -233,6 +233,7 @@ class GameState extends State<Game> {
             boxShadow: AppShadows.customBoxShadow,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.black, width: 1.5)),
+        alignment: Alignment.center,
         child: TextField(
           controller: _textFieldInput,
           decoration: InputDecoration(
