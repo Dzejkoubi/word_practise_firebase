@@ -14,13 +14,21 @@ class UserCentre extends StatefulWidget {
 }
 
 class _UserCentreState extends State<UserCentre> {
-  final List<Widget> _UserCentrePages = <Widget>[
+  int currentPageIndex = 0; // Start with SignUp page
+  final List<Widget> userCentrePages = <Widget>[
     const SignUp(),
     const SignIn(),
     const LoggedIn(),
   ];
+
+  void changePage(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return _UserCentrePages[2];
+    return userCentrePages[currentPageIndex];
   }
 }
