@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
 import 'package:word_practise_firebase/firebase_options.dart';
 import 'package:word_practise_firebase/pages/practise.dart';
-import 'package:word_practise_firebase/pages/user_centre.dart';
+import 'package:word_practise_firebase/pages/user_auth/user_centre.dart';
 import 'package:word_practise_firebase/pages/your_words.dart';
 
 void main() async {
@@ -22,7 +22,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   //Navigation bar index
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   final List<Widget> _navBarWidgets = <Widget>[
     const YourWords(),
@@ -65,9 +65,7 @@ class _MainState extends State<Main> {
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
-                // Navigate to the settings page
-              },
+              onPressed: () {},
             ),
             title: PageTitle(text: pageTitles[_selectedIndex]),
             actions: <Widget>[

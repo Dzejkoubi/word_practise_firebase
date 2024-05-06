@@ -24,16 +24,6 @@ class _UserCentreState extends State<UserCentre> {
       child: Column(
         children: <Widget>[
           BasicTextField(
-            hintText: "First Name",
-            controller: _firstNameInput,
-          ),
-          addVerticalSpace(10),
-          BasicTextField(
-            hintText: "Second Name",
-            controller: _secondNameInput,
-          ),
-          addVerticalSpace(10),
-          BasicTextField(
             hintText: "Nick Name",
             controller: _nickNameInput,
           ),
