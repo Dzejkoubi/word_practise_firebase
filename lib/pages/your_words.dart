@@ -191,6 +191,3 @@ class _WordsScreenState extends State<WordsScreen> {
     );
   }
 }
-
-// Text(words[index].english.join(", ")),
-// Text(words[index].czech.join(", ")),

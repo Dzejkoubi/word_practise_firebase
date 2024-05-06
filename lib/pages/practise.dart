@@ -6,6 +6,7 @@ import 'package:word_practise_firebase/components/styles/button_styles.dart';
 import 'package:word_practise_firebase/components/styles/general_styles.dart';
 import 'package:word_practise_firebase/components/styles/text_styles.dart';
 import 'package:word_practise_firebase/components/helper_widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 //Firebase
 
 class Game extends StatefulWidget {
@@ -40,6 +41,7 @@ class GameState extends State<Game> {
   String foreignWord = "";
   List<dynamic> englishWords = [];
   List<dynamic> czechWords = [];
+  String picture = "";
   int englishWordsLength = 0;
   int czechWordsLength = 0;
   int czOrEn = 0;
@@ -205,18 +207,28 @@ class GameState extends State<Game> {
       //Picture for the word -- if no picture available, show a message
 
       Container(
-          width: 320,
-          height: 320,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black, width: 1.5),
-            boxShadow: AppShadows.customBoxShadow,
+        width: 320,
+        height: 320,
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.black, width: 1.5),
+          boxShadow: AppShadows.customBoxShadow,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.network(
+            'https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/299955693_394909949440211_4594910037695120492_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=HdjkSA6TQuMQ7kNvgGtgbWf&_nc_ht=scontent-ams4-1.xx&oh=00_AfBJI3ZB4znHdtmhsswJNBFopWHmKdmtpQtghCtUhUYOGw&oe=663EF5C1',
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              print('Error loading image: $error');
+              return const Center(
+                child: Text('No picture available'),
+              );
+            },
           ),
-          child: const Center(
-              child: NormalText(
-            text: 'No picture available',
-          ))),
+        ),
+      ),
 
       addVerticalSpace(20),
       ImportantText(text: foreignWord),

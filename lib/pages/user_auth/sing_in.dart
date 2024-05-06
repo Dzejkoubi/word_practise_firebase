@@ -38,14 +38,14 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Already have an account?",
+              "Don't have an account?",
               style: TextStyle(color: Colors.grey[700]),
             ),
             TextButton(
               onPressed: () {
                 widget.onSignInSuccess();
               },
-              child: const Text("Sign In"),
+              child: const Text("Sign Up"),
             ),
           ],
         ),
